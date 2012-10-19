@@ -2,7 +2,6 @@ Build the rest system and then deploy the billpayrest module to the server. Note
 
 The URLs for the service are:
 
-localhost:8080/bill-pay-rest/rs/bills
 localhost:8080/bill-pay-rest/rs/bills/bill/{billed}
 localhost:8080/bill-pay-rest/rs/bills/audit/{billed}
 localhost:8080/bill-pay-rest/rs/bills/pay/{billed}
