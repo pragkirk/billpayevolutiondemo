@@ -1,0 +1,27 @@
+Code samples for refactoring an application to a modular architecture.
+
+You can run the build for each of the Refactoring samples using ant. Just type the following at command line:
+
+ant -f <nameofbuildfile.xml>
+
+If the name of the build file is build.xml, you can just type ant.
+
+A JarAnalyzer target is included in each of the build scripts, but is not invoked by default. To use JarAnalyzer, you'll need to install GraphViz. (www.graphfix.org).
+
+Once GraphViz is installed, you may to modify the build script to point to dot. After you've done that, you can use the following command:
+
+ant <jaranalyzertarget> -f <nameof buildfile.xml>
+
+Following along with the Refactorings:
+
+1.) Build the InitialVersion project. You'll only get a single WAR file for deployment in the /deploy directory. Deploy this to an app server. I typically use GlassFish for the demonstration. Access the application using the URL: http://localhost:[port]/billpay/search.jsp.
+2.) Walk through each of the subsequent Refactoring projects. As you build each of these, examine the /bin directory. You'll see the modules that are included within the WAR file. As you walk through each Refactoring, you'll see more and more modules appear. 
+3.) Once you've gotten through Refactoring7, you have a modular architecture. Several things have happened at this point:
+	- We've applied several modularity patterns.
+	- The build script has changed significantly.
+	- We've made several changes to the application structure to decouple the various modules.
+	- The WAR file consists primarily of modules.
+	- Individual modules can be maintained and built separately. 
+4.) Finally, we "OSGi-ify" the application to take full advantage of the runtime benefits of modularity. 
+5.) The billpayosgiservices project demonstrates an initial foray into the world of OSGi. We don't use any framework here, and program directly to the OSGi API. It's a bit complex, our code depends on OSGi, and at runtime strange things can happen because we aren't managing lifecycle dependencies. Since I typically use GlassFish for the demonstration, it's easy to deploy each of these OSGi modules and essentially treat them as separate entities when deploying. It's very flexible.
+6.) The billpayosgiBlueprint project uses OSGi Blueprint, which is basically Spring for OSGi. At this point, we have completely eliminated code dependencies on the OSGi API, simplifying the example greatly. See the readme.txt file in this directory for more information. Access the application using the URL: http://localhost:[port]/bill-pay/search.jsp. To demonstrate some of this flexibility, there is a /rest directory that introduces a new module that exposes the full functionality of this application as a RESTful web service. Note that we deploy this web service without modifying or redeploying any other aspect of the application. To demonstrate use of the RESTful web service, there is an /html directory with a simple web app that invokes the web service via AJAX and uses JSON-P. Jetty is included if you want to try this out. Just copy the .html and .css file to the /jetty/webapps directory, start jetty, and access billpay.html. See the readme.txt file in the /rest directory for further details. As an added bonus, this new client uses progressive enhancement, so it even works well if you run it on a mobile device (I use iOS Simulator in the demonstration). 
