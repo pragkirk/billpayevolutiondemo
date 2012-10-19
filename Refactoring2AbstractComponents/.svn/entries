@@ -1,0 +1,81 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/Refactoring2AbstractComponents
+https://kcode.googlecode.com/svn
+
+
+
+2010-06-14T19:06:33.113895Z
+84
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+test
+dir
+
+buildlib
+dir
+
+WEB-INF
+dir
+
+src
+dir
+
+clean.bat
+file
+
+
+
+
+2012-08-01T14:31:01.000000Z
+2c6af4d675bb852056b5cfc279ae7301
+2009-11-05T17:49:13.810581Z
+69
+pragkirk
+has-props
+
+cmd.bat
+file
+
+
+
+
+2012-08-01T14:31:01.000000Z
+45e0edaca8702e6e90d1d98cf3647d5f
+2009-11-05T17:49:13.810581Z
+69
+pragkirk
+has-props
+
+jsp
+dir
+
+build.xml
+file
+
+
+
+
+2012-08-01T14:31:01.000000Z
+72c30cc61b7c424153cbe9ea8c8df040
+2010-06-14T19:06:33.113895Z
+84
+pragkirk
+

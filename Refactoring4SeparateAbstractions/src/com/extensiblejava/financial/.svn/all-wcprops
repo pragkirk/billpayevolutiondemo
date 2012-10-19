@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/src/com/extensiblejava/financial
+END
+Payable.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/src/com/extensiblejava/financial/Payable.java
+END
+Payment.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/src/com/extensiblejava/financial/Payment.java
+END

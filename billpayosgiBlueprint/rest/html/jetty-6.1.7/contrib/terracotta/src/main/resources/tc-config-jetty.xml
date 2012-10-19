@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  All content copyright (c) 2003-2006 Terracotta, Inc.,
+  except as may otherwise be noted in a separate copyright notice.
+  All rights reserved.
+
+-->
+<!-- This is a Terracotta configuration file that has been pre-configured
+for use with Jetty
+
+For more information, please see the product documentation -->
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+
+  <!-- Tell DSO where the Terracotta server can be found; 
+  See the Terracotta DSO Guide for additional information. -->
+  <servers>
+    <server name="localhost">
+      <data>%(user.home)/terracotta/server-data</data>
+      <logs>%(user.home)/terracotta/server-logs</logs>
+    </server>
+  </servers>
+
+  <!-- Tell DSO where to put the generated client logs
+  See the Terracotta DSO Guide for additional information. -->
+  <clients>
+    <logs>%(user.home)/terracotta/client-logs</logs>
+    <modules>
+      <module name="modules-common-1.0" version="1.0.0"/>
+      <module name="clustered-jetty-6.1" version="1.0.0"/>
+      <module name="clustered-apache-struts-1.1" version="1.1.0"/>
+      <module  name="jetty-terracotta-session" version="6.1.5"/>
+    </modules>
+  </clients>
+  <application>
+    <dso>
+      <!-- Our app requires these custom objects/classes to be shared - the following declarations
+      tells DSO which ones they are. When the app runs under DSO, instances of these classes
+      will broadcast changes in their state.
+
+      A good idiom when writing an app that you intend to cluster via TC DSO, is to group the 
+      classes you wish to share under a single package (although if you follow the MVC pattern
+      this tends to happen naturally) - this way the list of classes you wish to instrument
+      can be concise -->
+
+      <instrumented-classes>
+        <include>
+            <class-expression>demo..*</class-expression>
+        </include>
+        <include>
+            <class-expression>org.apache.struts..*</class-expression>
+        </include>
+        <include>
+            <class-expression>org.apache.commons.beanutils..*</class-expression>
+        </include>
+      </instrumented-classes>
+
+      <roots>
+
+        <root>
+          <field-name>demo.townsend.service.ProductCatalog.catalog</field-name>
+          <root-name>ProductCatalog</root-name>
+        </root>
+      </roots>
+    </dso>
+  </application>
+</tc:tc-config>

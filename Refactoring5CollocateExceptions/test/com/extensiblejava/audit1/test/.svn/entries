@@ -1,0 +1,52 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/test/com/extensiblejava/audit1/test
+https://kcode.googlecode.com/svn
+
+
+
+2009-11-05T17:57:37.190097Z
+72
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+AuditFacade1Test.java
+file
+
+
+
+
+2012-08-01T14:31:02.000000Z
+61918e5f2e340380fa76ebae93ee00f9
+2009-11-05T17:57:37.190097Z
+72
+pragkirk
+
+AllTests.java
+file
+
+
+
+
+2012-08-01T14:31:02.000000Z
+c44ba791884856f282494000207d5c7c
+2009-11-05T17:57:37.190097Z
+72
+pragkirk
+

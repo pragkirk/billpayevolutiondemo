@@ -1,0 +1,55 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/InitialVersion
+https://kcode.googlecode.com/svn
+
+
+
+2010-06-14T18:45:28.682761Z
+80
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+test
+dir
+
+buildlib
+dir
+
+WEB-INF
+dir
+
+src
+dir
+
+jsp
+dir
+
+build.xml
+file
+
+
+
+
+2012-08-01T14:31:02.000000Z
+766178b0bb0d6362c5b1a483d7be8209
+2010-06-14T18:44:43.795357Z
+79
+pragkirk
+

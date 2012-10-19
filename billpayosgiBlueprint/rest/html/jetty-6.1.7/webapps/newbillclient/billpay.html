@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+    <title>Bill Payment</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript">
+		function main() { }
+		
+		var billIDs;
+		var currBillID;
+		smallscreen = screen.width < 600;
+		var backPage = "bill-search";
+		
+		function search() {		
+			var scriptTag = document.createElement('SCRIPT');
+			var id = document.getElementById("custid").value;
+			var url = "http://localhost:8080/bill-pay-rest/rs/bills/" + id + "?callback=parseRequest";
+			scriptTag.src = url;
+		
+			document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
+			
+				
+			/* var xmlDoc = new XMLHttpRequest();
+			var id = document.getElementById("custid").value;
+			var url = "http://localhost:8080/bill-pay-rest/rs/bills/" + id;
+			alert(url);
+			//xmlDoc.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+			xmlDoc.open("GET",url,false);
+			xmlDoc.send();
+			alert('here');
+			var xmlRes = xmlDoc.responseText;
+			//alert(xmlDoc.status);
+			alert(xmlRes);
+			document.getElementById('bill-list').style.visibility='visible';*/
+		}
+		function parseRequest(response) {
+			document.getElementById('customername').innerHTML=response.customer;
+			var billListStr = "";
+			for (i = 0; i < response.billname.length; i++) {
+				billListStr = billListStr + '<p><span id="bill-link"/> <a href="#" onClick="billDetail(' + response.billid[i] + ')">' + response.billname[i] + '</a></p>'
+			}
+			document.getElementById('billlist').innerHTML=billListStr;
+			billIDs = response.billid;
+			//var obj = eval(response);
+			//alert(response.customer);
+			//alert(response.billname[0]);
+			//document.writeln(response);
+			if (smallscreen) {
+				document.getElementById('bill-search').style.visibility='hidden';
+				document.getElementById('bill-detail').style.visibility='hidden';
+			}
+			document.getElementById('bill-list').style.visibility='visible';
+			backPage = "bill-search";
+		}
+		
+		function billDetail(billid) {
+			currBillID = billid;
+			var scriptTag = document.createElement('SCRIPT');
+			var url = "http://localhost:8080/bill-pay-rest/rs/bills/bill/" + billid + "?callback=parseBillDetail";
+			scriptTag.src = url;
+			
+			document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
+
+		}
+		
+		function parseBillDetail(response) {
+			document.getElementById("billname").innerHTML=response.name;
+			document.getElementById("amount").innerHTML="Amount: " + response.amount;
+			document.getElementById("status").innerHTML="Status: " + response.status;
+			if (response.auditedAmount="undefined") { response.auditedAmount = "not audited"; }
+			
+			document.getElementById("audited").innerHTML="Audited Amount: " + response.auditedamount;
+			document.getElementById("paid").innerHTML="Paid Amount: " + response.paidamount;
+			if (smallscreen) {
+				
+				document.getElementById('bill-search').style.visibility='hidden';
+				document.getElementById('bill-list').style.visibility='hidden';
+			}
+			document.getElementById('bill-detail').style.visibility='visible';
+			backPage = "bill-list";
+			
+		}
+		
+		function audit() {
+			var scriptTag = document.createElement('SCRIPT');
+			var url = "http://localhost:8080/bill-pay-rest/rs/bills/audit/" + currBillID + "?callback=parseBillDetail";
+			scriptTag.src = url;
+			document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
+		}
+		
+		function pay() {
+			var scriptTag = document.createElement('SCRIPT');
+			var url = "http://localhost:8080/bill-pay-rest/rs/bills/pay/" + currBillID + "?callback=parseBillDetail";
+			scriptTag.src = url;
+			document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
+		}
+		
+		function backtosearch() {
+			if (backPage == "bill-search") {
+				document.getElementById(backPage).style.visibility='visible';
+				document.getElementById('bill-list').style.visibility='hidden';
+				document.getElementById('bill-detail').style.visibility='hidden';
+			} else if (backPage = "bill-list") {
+				document.getElementById(backPage).style.visibility='visible';
+				document.getElementById('bill-search').style.visibility='hidden';
+				document.getElementById('bill-detail').style.visibility='hidden';
+				backPage = "bill-search"
+			}
+		}
+	</script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+	<div id="header">
+		<ul>
+    		<li><a href="#" onClick="backtosearch()" id="search-nav" title="Search">Go Back</a></li>
+		</ul>
+	</div>
+	<div id="pages">
+		<div id="bill-search">
+			<h1>Bill Pay - Customer Search</h1>
+			<p>Enter ID: <input type="text" id="custid"/></p>
+			<div id="button" onClick="search();">Search
+			</div>
+		</div>
+		<div id="bill-info">
+		<div id="bill-list">
+			<h3>Customer Name: <span id="customername"></h3>
+			<h3>Bill List</h3>
+			<p span id="billlist">
+			</p>
+		</div>
+		<div id="bill-detail">
+			<h3>Detail for bill: <span id="billname"></h3>
+			<p span id="amount"></p>
+			<p span id="status"></p>
+			<p span id="audited"></p>
+			<p span id="paid"></p>
+			<div id="button2" onClick="audit();">Audit</div>
+			   <div id="button2" onClick="pay();">Pay</div>
+		</div>
+		</div>
+	</div>
+  
+  <script>main()</script>
+</body>
+</html>

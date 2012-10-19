@@ -1,0 +1,588 @@
+<project name="Proof" default="dotanalyzerapp.new" basedir=".">
+
+	<property name="javasrc" location="${basedir}/src"/>
+	<property name="buildstats" location="${basedir}/buildstats"/>
+	<property name="testsrc" location="${basedir}/test"/>
+	<property name="build" location="${basedir}/build"/>
+	<property name="buildlib" location="${basedir}/buildlib"/>
+	<property name="buildsrc" location="${basedir}/buildsrc"/>
+	<property name="bindist" location="${basedir}/bin"/>
+	<property name="deploy" location="${basedir}/deploy"/>
+	<property name="lib" location="${basedir}/WEB-INF/lib"/>
+	<property name="binosgi" location="${basedir}/binosgi"/>
+	<property name="web" location="${basedir}/web"/>
+	<property name="version" value="1.0"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${javasrc}"/>
+		<pathelement path="${testsrc}"/>
+		<pathelement location="${lib}/struts.jar"/>
+		<pathelement location="${lib}/servlet-api.jar"/>
+	</path>
+	
+	<target name="clean" description="clean up">
+		<delete dir="${bindist}"/>
+		<delete dir="${deploy}"/>
+		<delete dir="${build}"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${buildstats}"/>
+		<delete dir="${binosgi}"/>
+		<delete dir="${web}"/>
+		<delete file="${basedir}/billtest.txt"/>
+		<delete file="${basedir}/billpaytest.txt"/>
+		<delete file="${basedir}/financialtest.txt"/>
+		<delete file="${basedir}/audit1test.txt"/>
+		<delete file="${basedir}/audit2test.txt"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<tstamp/>
+		<mkdir dir="${bindist}"/>
+		<mkdir dir="${buildstats}"/>
+		<mkdir dir="${binosgi}"/>
+	</target>
+	
+	<target name="auditspeccompile" depends="init">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/audit/**"/>
+				<exclude name="com/extensiblejava/audit/audit1/**"/>
+				<exclude name="com/extensiblejava/audit/audit2/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+			</classpath>
+		</javac>
+		<!-- <jar jarfile="${bindist}/auditspec.jar" basedir="${build}" includes="com/extensiblejava/audit/**"/> -->
+		<taskdef resource="aQute/bnd/ant/taskdef.properties"
+      		classpath="${buildlib}/bnd-0.0.187.jar"/> 
+   		<bnd 
+      		classpath="${build}" 
+		    eclipse="false" 
+		    failok="false" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/auditspec.bnd"/> 
+		    
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="audit1compile" depends="auditspeccompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/audit/audit1/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+			</classpath>
+		</javac>
+		<!-- <jar jarfile="${bindist}/audit1.jar" basedir="${build}" includes="com/extensiblejava/audit/audit1/**"/> -->
+		<bnd 
+      		classpath="${build}" 
+		    eclipse="false" 
+		    failok="false" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/audit1.bnd"/> 
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="audit1testcompile" depends="audit1compile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/test/**"/>
+				<exclude name="com/extensiblejava/financial/test/**"/>
+				<exclude name="com/extensiblejava/audit2/test/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/audit1.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/audit1test.jar" basedir="${build}"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+				<pathelement path="${binosgi}/audit1.jar"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.audit1.test.AllTests" outfile="audit1test">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	
+	<target name="audit2compile" depends="audit1testcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/audit/audit2/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+			</classpath>
+		</javac>
+		<!-- <jar jarfile="${bindist}/audit2.jar" basedir="${build}" includes="com/extensiblejava/audit/audit2/**"/> -->
+		<bnd 
+      		classpath="${build}" 
+		    eclipse="false" 
+		    failok="false" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/audit2.bnd"/> 
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="audit2testcompile" depends="audit2compile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/test/**"/>
+				<exclude name="com/extensiblejava/financial/test/**"/>
+				<exclude name="com/extensiblejava/audit1/test/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/audit2.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/audit2test.jar" basedir="${build}"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+				<pathelement path="${binosgi}/audit2.jar"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.audit2.test.AllTests" outfile="audit2test">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="financialcompile" depends="audit2testcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/financial/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+			</classpath>
+		</javac>
+		<!-- <jar jarfile="${bindist}/financial.jar" basedir="${build}" includes="com/extensiblejava/financial/**"/> -->
+		<bnd 
+      		classpath="${build}" 
+		    eclipse="false" 
+		    failok="false" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/financial.bnd"/> 
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="financialtestcompile" depends="financialcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/test/**"/>
+				<exclude name="com/extensiblejava/audit1/test/**"/>
+				<exclude name="com/extensiblejava/audit2/test/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement location="${binosgi}/financial.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/financialtest.jar" basedir="${build}"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement path="${binosgi}/financial.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.financial.test.AllTests" outfile="financialtest">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billcompile" depends="financialtestcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<exclude name="com/extensiblejava/audit/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+				<exclude name="com/extensiblejava/mediator/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/financial.jar"/>
+			</classpath>
+		</javac>
+		<!-- <jar jarfile="${bindist}/bill.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/> -->
+		<bnd 
+      		classpath="${build}" 
+		    eclipse="false" 
+		    failok="false" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/bill.bnd"/> 
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billtestcompile" depends="billcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/audit1/**"/>
+				<exclude name="com/extensiblejava/audit2/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement path="${binosgi}/audit1.jar"/>
+				<pathelement path="${binosgi}/audit2.jar"/>
+				<pathelement location="${binosgi}/financial.jar"/>
+				<pathelement location="${binosgi}/bill.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/billtest.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement path="${bindist}/billtest.jar"/>
+				<pathelement path="${binosgi}/auditspec.jar"/>
+				<pathelement path="${binosgi}/audit1.jar"/>
+				<pathelement path="${binosgi}/audit2.jar"/>
+				<pathelement path="${binosgi}/financial.jar"/> 
+				<pathelement path="${binosgi}/bill.jar"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.bill.test.AllTests" outfile="billtest">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billpaycompile" depends="billtestcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<exclude name="com/extensiblejava/audit/**"/>
+				<exclude name="com/extensiblejava/bill/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${binosgi}/bill.jar"/>
+				<pathelement location="${binosgi}/financial.jar"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/audit1.jar"/>
+				<pathelement location="${binosgi}/audit2.jar"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+			</classpath>
+		</javac>
+		
+		<bnd 
+      		classpath="${build}" 
+		    eclipse="false" 
+		    failok="false" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/billpay.bnd"/> 
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billpaytestcompile" depends="billpaycompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/**"/>
+				<exclude name="com/extensiblejava/audit1/**"/>
+				<exclude name="com/extensiblejava/audit2/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement location="${binosgi}/financial.jar"/>
+				<pathelement location="${binosgi}/bill.jar"/>
+				<pathelement location="${binosgi}/billpay.jar"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/audit1.jar"/>
+				<pathelement location="${binosgi}/audit2.jar"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/billpaytest.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+				<pathelement location="${bindist}/billpaytest.jar"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/billpay.jar"/> 
+				<pathelement location="${binosgi}/financial.jar"/> 
+				<pathelement location="${binosgi}/bill.jar"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement location="${binosgi}/audit1.jar"/>
+				<pathelement location="${binosgi}/audit2.jar"/>
+				<pathelement path="${buildlib}/felix.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.mediator.test.AllTests" outfile="billpaytest">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="appcompile" depends="billpaytestcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/ui/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${binosgi}/auditspec.jar"/>
+				<pathelement path="${binosgi}/audit1.jar"/>
+				<pathelement location="${binosgi}/bill.jar"/>
+				<pathelement location="${binosgi}/billpay.jar"/>
+				<pathelement location="${lib}/struts.jar"/>
+				<pathelement location="${lib}/osgi.core.jar"/>
+				<pathelement location="${lib}/osgi.cmpn.jar"/>
+				<pathelement location="${lib}/org.eclipse.equinox.http.helper.jar"/>
+				<pathelement location="${lib}/org.eclipse.equinox.jsp.jasper.jar"/>
+				<pathelement location="${lib}/servlet-api.jar"/>
+			</classpath>
+		</javac>
+		
+		<mkdir dir="${web}"/>
+		<!-- <mkdir dir="${web}/web"/> -->
+		<!-- <mkdir dir="${web}/META-INF"/> -->
+		<!-- <mkdir dir="${web}/web/lib"/> -->
+		<mkdir dir="${web}/WEB-INF"/>
+		<mkdir dir="${web}/WEB-INF/lib"/>
+		<mkdir dir="${web}/WEB-INF/classes"/>
+		
+		<!-- <copy todir="${web}">
+			<fileset dir="${build}">
+				<include name="com/extensiblejava/ui/Activator*.*"/>
+			</fileset>
+		</copy> -->
+		
+		<copy todir="${web}/WEB-INF/lib">
+			<fileset dir="${lib}">
+				<include name="struts.jar"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${web}/WEB-INF/classes">
+			<fileset dir="${build}">
+				<exclude name="com/extensiblejava/ui/Activator*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${web}/WEB-INF">
+			<fileset dir="${basedir}/WEB-INF">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${web}">
+			<fileset dir="${basedir}/webjsp">
+				<include name="*.jsp"/>
+				<include name="*.html"/>
+			</fileset>
+		</copy>
+		<!-- <copy todir="${web}/META-INF">
+			<fileset dir="${basedir}/META-INF">
+				<include name="MANIFEST.MF"/>
+			</fileset>
+		</copy> -->
+		
+		<jar jarfile="${binosgi}/billpayui.wab" basedir="${web}" manifest="${basedir}/META-INF/MANIFEST.MF" includes="**/*"/>
+		<!-- <bnd 
+      		classpath="${web}" 
+		    eclipse="false" 
+		    failok="true" 
+		    exceptions="true"
+		    output="${binosgi}"
+		    files="bndfiles/billpayui.bnd"/> -->
+		<!-- <delete dir="${buildsrc}"/> -->
+		<!-- <delete dir="${build}"/> -->
+	</target>
+	
+
+	<!-- <target name="xmlanalyzer" depends="bundle">
+
+        <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
+            <classpath>
+                <pathelement path="${buildlib}/jaranalyzer-0.9.3.jar"/>
+                <pathelement path="${buildlib}/lib/bcel-5.1.jar"/>
+                <pathelement path="${buildlib}/lib/jakarta-regexp-1.3.jar"/>
+                <pathelement path="${buildlib}/lib"/>
+            </classpath>
+        </taskdef>
+
+        <jaranalyzer srcdir="${bindist}" destfile="${buildstats}/dependencies.xml" 
+				summaryclass="com.kirkk.analyzer.textui.XMLUISummary" />
+
+	</target>
+	
+	<target name="dotanalyzerall" depends="xmlanalyzer">
+
+        <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
+            <classpath>
+                <pathelement path="${buildlib}/jaranalyzer-0.9.3.jar"/>
+                <pathelement path="${buildlib}/lib/bcel-5.1.jar"/>
+                <pathelement path="${buildlib}/lib/jakarta-regexp-1.3.jar"/>
+                <pathelement path="${buildlib}/lib"/>
+            </classpath>
+        </taskdef>
+
+        <jaranalyzer srcdir="${bindist}" destfile="${buildstats}/dependencies.grph" 
+				summaryclass="com.kirkk.analyzer.textui.DOTSummary" />
+				
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./buildstats/dependencies.grph -o ./buildstats/dependencies.png"/></exec>
+
+	</target> -->
+	
+	<target name="dotanalyzerapp.old" depends="appcompile">
+
+		<copy todir="${buildstats}">
+			<fileset dir="${bindist}">
+				<exclude name="*test.jar"/>
+			</fileset>
+		</copy>
+		
+        <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
+            <classpath>
+                <pathelement path="${buildlib}/jaranalyzer-1.2.jar"/>
+                <pathelement path="${buildlib}/lib/bcel-5.2.jar"/>
+                <pathelement path="${buildlib}/lib/jakarta-regexp-1.3.jar"/>
+                <pathelement path="${buildlib}/lib"/>
+            </classpath>
+        </taskdef>
+
+        <jaranalyzer srcdir="${binosgi}" destfile="${buildstats}/appdependencies-old.grph" 
+				summaryclass="com.kirkk.analyzer.textui.DOTSummary" />
+				
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./buildstats/appdependencies-old.grph -o ./buildstats/appdependencies-old.png"/></exec>
+
+	</target>
+	
+	<target name="dotanalyzerapp.new" depends="dotanalyzerapp.old">
+
+		<copy todir="${buildstats}">
+			<fileset dir="${bindist}">
+				<exclude name="*test.jar"/>
+			</fileset>
+		</copy>
+		
+        <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
+            <classpath>
+                <pathelement path="${buildlib}/jaranalyzer-1.2.jar"/>
+                <pathelement path="${buildlib}/lib/bcel-5.2.jar"/>
+                <pathelement path="${buildlib}/lib/jakarta-regexp-1.3.jar"/>
+                <pathelement path="${buildlib}/lib"/>
+            </classpath>
+        </taskdef>
+
+        <jaranalyzer srcdir="${binosgi}" destfile="${buildstats}/appdependencies.xml" 
+				summaryclass="com.kirkk.analyzer.textui.XMLUISummary" />
+			
+		<style in="${buildstats}/appdependencies.xml"
+	        out="${buildstats}/appdependencies-new.html"
+			style="${buildlib}/jaranalyzer.xsl">	
+		</style>
+		
+		<style in="${buildstats}/appdependencies.xml"
+	        out="${buildstats}/appdependencies-new.grph"
+			style="${buildlib}/jaranalyzer2dot.xsl">	
+		</style>
+
+				
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./buildstats/appdependencies-new.grph -o ./buildstats/appdependencies-new.png"/></exec>
+
+	</target>
+	
+</project>

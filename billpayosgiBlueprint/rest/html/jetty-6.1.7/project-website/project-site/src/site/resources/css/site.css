@@ -1,0 +1,136 @@
+div.summary
+{
+  font-size: 10pt;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+div.summary h1
+{
+}
+
+div.summary span
+{
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+div.feature {
+  font-size: 10pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 0px;
+}
+
+
+div.feature h2 {
+  background-image:  url(../images/feature2.gif);
+  background-repeat: no-repeat;
+  background-position: -4px -4px;
+  text-indent: 20px;
+}
+
+div.featureitem
+{
+  background-image:  url(../images/feature2.gif);
+  background-repeat: no-repeat;
+  background-position: -4px -4px;
+  font-style: oblique;
+  padding-left:40px;
+  line-height: 200%;
+}
+
+div.news
+{
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: oblique;
+  font-family: sans-serif;
+  width: 460px;
+  margin-bottom: 20px;
+}
+
+iframe.offers
+{
+  float: right;
+  background-position: top center;
+  background-repeat: no-repeat;
+  clear:right;
+  border-left: 2px solid #999999;
+  border-bottom: 4px solid #999999;
+  border-top: 2px dotted  #999999;
+  border-right: 2px dotted  #999999;
+  text-align: left;
+  font-size: 9pt;
+  margin-top: 8px;
+  padding-top: 4px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 260px;
+  height: 430px; 
+}
+
+iframe.study
+{
+  float: right;
+  clear:right;
+  border-left: 2px solid #999999;
+  border-bottom: 4px solid #999999;
+  border-top: 2px dotted  #999999;
+  border-right: 2px dotted  #999999;
+  text-align: left;
+  font-size: 9pt;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 260px;
+  height: 430px;
+  margin-left: 10px;
+}
+
+iframe.study img
+{
+  vertical-align: bottom;
+  padding-bottom:6px;
+}
+.text02 
+{
+  font-size: 14pt;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: small-caps;
+  text-decoration: none;
+  color: #000099;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  margin-left: 0px
+  margin-right: 0px
+}
+
+.itemTitle
+{
+  font-size: 10pt;
+  font-style: normal;
+  text-decoration: none;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  margin-left: 0px
+  margin-right: 0px
+}
+
+
+iframe.study *.description
+{
+  margin-top: 6px;
+  padding: 4px;
+  margin-bottom: 6px;
+  font-size: 9pt;
+  font-style: oblique;
+  font-family: helvetica, sans-serif;
+  background-color: #FFFFFF;
+  color: #666666;
+}
+

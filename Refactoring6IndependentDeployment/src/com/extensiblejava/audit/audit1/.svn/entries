@@ -1,0 +1,40 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/Refactoring6IndependentDeployment/src/com/extensiblejava/audit/audit1
+https://kcode.googlecode.com/svn
+
+
+
+2009-11-05T17:58:53.687709Z
+73
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+AuditFacade1.java
+file
+
+
+
+
+2012-08-01T14:31:13.000000Z
+46caf1dca2ceee0810fc2ce65ff0ede2
+2009-11-05T17:58:53.687709Z
+73
+pragkirk
+

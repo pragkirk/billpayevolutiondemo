@@ -1,0 +1,33 @@
+<xml-fragment>
+      <instrumented-classes>
+        <exclude>org.mortbay.jetty..*</exclude>
+        <exclude>org.apache.jasper..*</exclude>
+        <exclude>org.mortbay.thread.BoundedThreadPool</exclude>
+        <exclude>org.mortbay.component.AbstractLifeCycle</exclude>
+
+        <include>
+          <class-expression>org.mortbay.terracotta..*</class-expression>
+        </include>
+        <include>
+          <class-expression>org.mortbay.terracotta.servlet.TerracottaSessionManager$SessionData</class-expression>
+        </include>
+      </instrumented-classes>
+
+      <roots>
+        <root>
+          <field-name>org.mortbay.terracotta.servlet.TerracottaSessionManager._sessionDataMap</field-name>
+          <root-name>sessionTimeoutMap</root-name>
+        </root>
+        <root>
+          <field-name>org.mortbay.terracotta.servlet.TerracottaSessionIdManager._sessionIds</field-name>
+          <root-name>sessionIdMap</root-name>
+        </root>
+      </roots>
+
+      <locks>
+        <autolock>
+          <method-expression>* org.mortbay.terracotta.servlet.*.*(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+      </locks>
+</xml-fragment>

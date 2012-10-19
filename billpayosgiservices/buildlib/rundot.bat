@@ -1,0 +1,1 @@
+dot -Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 out.grph -o out.png

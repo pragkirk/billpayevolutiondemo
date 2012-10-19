@@ -1,0 +1,40 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/src/com/extensiblejava
+https://kcode.googlecode.com/svn
+
+
+
+2009-11-05T17:52:49.544692Z
+71
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+bill
+dir
+
+financial
+dir
+
+audit
+dir
+
+ui
+dir
+

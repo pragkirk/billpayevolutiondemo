@@ -1,0 +1,140 @@
+<!-- ================================================================= -->
+<!-- Updates the glassfish files in jetty from glassfish cvs           -->
+<!-- NOTE: you must have a login for java.net and have used cvs login  -->
+<!-- at least once to login to glassfish and set up the .cvspass file. -->
+<!-- ================================================================= -->
+<project name="Glassfish Jasper" default="update" basedir=".">
+    <property name="generated.srcs" value="target/generated-sources/main"/>
+    <property name="generated.java" value="${generated.srcs}/java"/>
+    <property name="generated.resources" value="${generated.srcs}/resources"/>
+
+    <!-- ============================================================== -->
+    <!-- Clean a previous export/checkout                               -->
+    <!-- ============================================================== -->
+     <target name="clean">
+       <delete dir="target/glassfish" quiet="true"/>
+     </target>
+
+    <!-- ============================================================== -->
+    <!-- Ceck if files already exported/checked out                     -->
+    <!-- ============================================================== -->
+    <target name="uptodate">
+      
+      <condition property="export.required">
+        <not>
+          <available file="${generated.java}/javax/servlet/jsp/JspPage.java" type="file" property="src.present"/>
+        </not>
+      </condition>
+    </target>
+
+
+    <target name="test-export" depends="uptodate">
+       <condition property="export.args.ok">
+         <and>
+           <not><equals arg1="${glassfish.cvs.login}" arg2="" trim="true"/></not>
+           <not><equals arg1="${glassfish.tag}" arg2="" trim="true"/></not>
+         </and>
+       </condition>
+       <condition property="export.checks.ok">
+         <and>
+           <isset property="export.args.ok"/>
+           <isset property="export.required"/>
+         </and>
+       </condition>
+    </target>
+
+
+    <target name="test-checkout" depends="uptodate">
+       <condition property="checkout.args.ok">
+         <and>
+           <not><equals arg1="${glassfish.cvs.login}" arg2="" trim="true"/></not>
+           <equals arg1="${glassfish.tag}" arg2="" trim="true"/>
+         </and>
+       </condition>
+       <echo message="checkout.args.ok=${checkout.args.ok} and export.required=${export.required}"/>
+       <condition property="checkout.checks.ok">
+         <and>
+           <isset property="checkout.args.ok"/>
+           <isset property="export.required"/>
+         </and>
+       </condition>
+       <echo message="checkout.checks.ok=${checkout.checks.ok}"/>
+    </target>
+
+
+
+    <!-- ============================================================== -->
+    <!-- Export the selected directories from glassfish                 -->
+    <!-- ============================================================== -->
+    <target name="export" description="Export src from glassfish" depends="test-export" if="export.checks.ok">
+       <!-- echo message="NOTE: You must have already performed a cvs login at least once to the glassfish cvs repo at cvs.dev.java.net."/ -->
+       <echo/>
+       <cvspass cvsroot=":pserver:guest@cvs.dev.java.net:/cvs" password="" />
+       <!-- fail unless="glassfish.cvs.login"/ -->
+       <fail unless="glassfish.tag"/>
+       <property name="CVSROOT" value=":pserver:guest@cvs.dev.java.net:/cvs"/>
+       <cvs command="export -r ${glassfish.tag}" package="glassfish/servlet-api/src/jsr245/src/share/" dest="target" cvsRoot="${CVSROOT}" failonerror="true" />
+       <cvs command="export -r ${glassfish.tag}" package="glassfish/appserv-jstl/src/javax" dest="target" cvsRoot="${CVSROOT}" failonerror="true" />
+   </target>
+
+    <!-- ============================================================== -->
+    <!-- Checkout the src from glassfish                                -->
+    <!-- ============================================================== -->
+    <target name="checkout" description="Checkout src from glassfish" depends="test-checkout" if="checkout.checks.ok">
+       <cvspass cvsroot=":pserver:guest@cvs.dev.java.net:/cvs" password="" />
+       <property name="CVSROOT" value=":pserver:guest@cvs.dev.java.net:/cvs"/>
+       <cvs command="co" package="glassfish/servlet-api/src/jsr245/src/share/" dest="target" cvsRoot="${CVSROOT}" failonerror="true" />
+       <!-- get the jstl stuff too -->
+       <cvs command="co" package="glassfish/appserv-jstl/src/javax" dest="target" cvsRoot="${CVSROOT}" failonerror="true" />
+   </target>
+
+
+    <!-- ============================================================== -->
+    <!-- Copy the required directories to src                           -->
+    <!-- ============================================================== -->
+   <target name="update" description="Copy selected exported glassfish files">
+     <copy todir="${generated.java}/javax">
+      <fileset dir="target/glassfish/servlet-api/src/jsr245/src/share/javax">
+        <exclude name="**/CVS/*"/>
+        <exclude name="**/*.properties"/>
+      </fileset>
+     </copy>
+
+    <copy todir="${generated.resources}/javax/servlet/jsp/resources">
+      <fileset dir="target/glassfish/servlet-api/src/jsr245/src/share/dtd">
+        <exclude name="**/CVS/*"/>
+      </fileset>
+    </copy>
+
+    <copy todir="${generated.resources}/javax">
+      <fileset dir="target/glassfish/servlet-api/src/jsr245/src/share/javax">
+        <include name="**/*.properties"/>
+      </fileset>
+    </copy>
+
+    <copy todir="${generated.java}/javax/servlet/jsp/jstl">
+      <fileset dir="target/glassfish/appserv-jstl/src/javax/servlet/jsp/jstl">
+        <exclude name="**/CVS/*"/>
+      </fileset>
+    </copy>
+
+   </target>
+
+    <!-- ============================================================== -->
+    <!-- Export the src and copy selected bits to src/main/             -->
+    <!-- ============================================================== -->
+  <target name="export-update" description="Export the src and copy selected files to the src/main/java dir" depends="export,update"/>
+
+    <!-- ============================================================== -->
+    <!-- Checkout the src and copy selected bits to src/main/             -->
+    <!-- ============================================================== -->
+  <target name="checkout-update" description="Checkout the src and copy selected files to the src/main/java dir" depends="checkout,update"/>
+
+    <!-- ============================================================== -->
+    <!-- Export or Checkout the src and copy selected bits to src/main/ -->
+    <!-- ============================================================== -->
+  <target name="extract-src" description="Export src if glassfish.tag is set, otherwise do a checkout of head" depends="export,checkout,update">
+  </target>
+
+</project>
+

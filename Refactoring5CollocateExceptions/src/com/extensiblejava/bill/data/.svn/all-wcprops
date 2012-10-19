@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/bill/data
+END
+CustomerDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/bill/data/CustomerDataBean.java
+END
+BillDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/bill/data/BillDataBean.java
+END
+BillDb.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/bill/data/BillDb.java
+END

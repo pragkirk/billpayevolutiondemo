@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill
+END
+Name.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/Name.java
+END
+Customer.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/Customer.java
+END
+Bill.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/Bill.java
+END
+EntityLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/EntityLoader.java
+END
+CustomerEntityLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/CustomerEntityLoader.java
+END
+BillEntityLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/BillEntityLoader.java
+END
+DefaultCustomerEntityLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/DefaultCustomerEntityLoader.java
+END
+DefaultBillEntityLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/bill/DefaultBillEntityLoader.java
+END

@@ -1,0 +1,99 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/billpayosgiservices/buildlib/docs/api/com/kirkk/analyzer
+https://kcode.googlecode.com/svn
+
+
+
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+textui
+dir
+
+package-frame.html
+file
+
+
+
+
+2012-08-01T14:31:05.000000Z
+5e812d16bce73b30bf441f3b4406617f
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+has-props
+
+Analyzer.html
+file
+
+
+
+
+2012-08-01T14:31:05.000000Z
+8b073fc452b8489f3d599e3efce057a1
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+has-props
+
+package-summary.html
+file
+
+
+
+
+2012-08-01T14:31:05.000000Z
+d8494d80f7accb7f5f1afcee09f9e0f5
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+has-props
+
+Configuration.html
+file
+
+
+
+
+2012-08-01T14:31:05.000000Z
+faa3c27b3063ea5e3a8e8fcd644bccf4
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+has-props
+
+package-tree.html
+file
+
+
+
+
+2012-08-01T14:31:05.000000Z
+d3471e484405b84f83bc6f6e599a85f0
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+has-props
+
+framework
+dir
+

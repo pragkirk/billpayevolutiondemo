@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/95/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/license.txt
+END
+jaranalyzer2dot.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/jaranalyzer2dot.xsl
+END
+junit.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/95/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/junit.jar
+END
+jaranalyzer.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/jaranalyzer.xsl
+END
+runxmlsummary.bat
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/runxmlsummary.bat
+END
+jaranalyzer-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/jaranalyzer-1.1.jar
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/readme.txt
+END
+rundotsummary.bat
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/buildlib/rundotsummary.bat
+END

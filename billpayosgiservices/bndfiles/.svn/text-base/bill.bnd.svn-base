@@ -1,0 +1,3 @@
+Import-Package: com.extensiblejava.audit
+Export-Package: com.extensiblejava.bill, com.extensiblejava.bill.data
+Bundle-SymbolicName: bill

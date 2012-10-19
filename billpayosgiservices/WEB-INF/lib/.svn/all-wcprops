@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib
+END
+struts.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/struts.jar
+END
+org.apache.commons.logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/org.apache.commons.logging.jar
+END
+org.eclipse.equinox.jsp.jasper.registry.jar
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/org.eclipse.equinox.jsp.jasper.registry.jar
+END
+javax.servlet.jsp.jar
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/javax.servlet.jsp.jar
+END
+osgi.core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/osgi.core.jar
+END
+org.apache.jasper.jar
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/org.apache.jasper.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/servlet-api.jar
+END
+org.eclipse.equinox.http.helper.jar
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/org.eclipse.equinox.http.helper.jar
+END
+osgi.cmpn.jar
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/osgi.cmpn.jar
+END
+org.eclipse.equinox.jsp.jasper.jar
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/org.eclipse.equinox.jsp.jasper.jar
+END
+org.apache.commons.el.jar
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/WEB-INF/lib/org.apache.commons.el.jar
+END

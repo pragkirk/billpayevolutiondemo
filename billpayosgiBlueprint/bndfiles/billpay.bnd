@@ -1,0 +1,3 @@
+Import-Package: com.extensiblejava.bill,com.extensiblejava.financial,com.extensiblejava.audit
+Export-Package: com.extensiblejava.mediator
+Bundle-SymbolicName: billpay

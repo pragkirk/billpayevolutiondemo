@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+	<!-- <bean name="AuditFactory" class="com.extensiblejava.mediator.AuditFacadeFactoryImpl"
+	  		factory-method="getInstance">
+			<constructor-arg><ref bean="auditor"/></constructor-arg>
+	  </bean> -->
+	
+	<bean name="AuditFactory" class="com.extensiblejava.rest.AuditFacadeFactoryImpl"
+	  		init-method="start" destroy-method="stop">
+			<property name="auditFacade" ref="auditor"/>
+	  </bean>
+	
+	
+</beans>

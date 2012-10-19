@@ -1,0 +1,48 @@
+body { width: 95%; font-family:Verdana,sans-serif;font-size:1.0em;}
+
+/* mobile CSS */
+@media screen and (max-device-width:480px) {
+	#header {position:absolute; top:0px; left:0px; background-color:black; width:100%; }
+	#header ul { list-style:none; border:none;  padding:0px; width:100%;}
+	#header ul li { list-style:none; background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.16, rgb(0,0,0)),
+		color-stop(0.58, rgb(25,25,25)),
+		color-stop(0.79, rgb(50,50,50)) 
+	); }
+	#header ul li a { display:block; width:100%; padding:15px 0px 0px 0px; text-align:center; color:white; text-decoration: none; font: bold 2em Helvetica, Sans-Serif;}
+	h1 {font-size:1.2em; }
+	#custid{ height:20px; width: 50px; border-radius:5px; font-size:1.1em; }
+	#bill-search{position:absolute; top:70px; width:95%; padding:.3em; margin-right:.3em;}
+	#bill-list {visibility:hidden;position:absolute; top:70px; width:95%; padding:.3em; margin-right:.3em;}
+	#bill-detail {visibility:hidden;position:absolute; top:70px; width:95%; padding:.3em; margin-right:.3em;}
+
+	#button { float:inherit; background-color:#E8D0A9; border:1px solid black; margin:auto; border-radius:5px; width:20%; padding:10px;text-align:center; cursor:pointer}
+	
+	#button2 {float:left; background-color:#E8D0A9; border:1px solid black; margin:10px; border-radius:5px; width:15%; padding:10px;text-align:center; cursor:pointer}
+	
+	#bill-link {display:block; background-color:#E8D0A9; border:1px solid black;width:100%; margin: -12px 0px -12px 0px; padding:5px 0px 5px 0px; text-align:center;}
+	
+	a {text-decoration:none;}
+	
+}
+
+/* Desktop CSS */
+@media screen and (min-device-width:481px) {
+	#header{visibility:hidden;}
+	#custid{ height:20px; width: 50px; border-radius:5px; font-size:1.1em; }
+	#bill-search{ min-width: 500px; background-color:#C1DAD6; text-align:center; margin:auto; width: 60%; padding:30px 0px 30px 50px; border:1px dotted #6D929B; border-radius:5px;}
+	
+	#bill-list {min-width: 500px; height:300px; background-color:#C1DAD6; border-radius:5px; visibility:hidden;width:20%; float:left; border:1px dotted #6D929B; margin: 15px 0px 0px 7%; padding:15px 0px 0px 20px;}
+	#bill-detail {min-width: 500px; height:300px; background-color:#C1DAD6; border-radius:5px; visibility:hidden;width:40%; float:left; border:1px dotted #6D929B; margin: 15px 0px 0px 20px; padding:15px 0px 0px 15px;}
+
+	#button {font-size:1.2em; float:inherit; background-color:#E8D0A9; border:1px solid black; margin:auto; border-radius:5px; width:15%; padding:10px;text-align:center; cursor:pointer}
+	#button:hover {background-color:#B7AFA3;}
+	
+	#button2 {font-size:1.2em; float:inherit; background-color:#E8D0A9; border:1px solid black; margin:10px; border-radius:5px; width:15%; padding:10px;text-align:center; cursor:pointer}
+	#button2:hover {background-color:#B7AFA3;}
+	
+	
+}

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui
+END
+CustomerSearchResultsBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/CustomerSearchResultsBean.java
+END
+BillDetailAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/BillDetailAction.java
+END
+AuditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/AuditAction.java
+END
+CustomerSearchAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/CustomerSearchAction.java
+END
+PayAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/PayAction.java
+END
+BillDetailForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/BillDetailForm.java
+END
+CustomerSearchForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/src/com/extensiblejava/ui/CustomerSearchForm.java
+END

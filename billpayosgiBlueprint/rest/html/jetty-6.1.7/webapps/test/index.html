@@ -1,0 +1,70 @@
+<HTML>
+  <HEAD>
+    <TITLE>Powered By Jetty</TITLE>
+    <META http-equiv="Pragma" content="no-cache">
+    <META http-equiv="Cache-Control" content="no-cache,no-store">
+  </HEAD>
+<BODY>
+<A HREF="http://jetty.mortbay.org"><IMG SRC="jetty_banner.gif"></A>
+<h1>Welcome to Jetty 6</h1>
+<p>
+This is the Test webapp for the Jetty 6 HTTP Server and Servlet Container.  
+For more information about Jetty, please visit our
+<a href="http://jetty.mortbay.org">website</a>
+or <a href="http://docs.codehaus.org/display/JETTY/Jetty+Wiki">wiki</a>. 
+Commercial support for Jetty is available via <a href="http://www.webtide.com">webtide</a>.
+</p>
+<p>
+This is a test context that serves:
+<ul>
+<li>static content (
+<a href="d.txt">tiny</a>,
+<a href="da.txt">small</a>,
+<a href="dat.txt">medium</a>,
+<a href="data.txt">large</a>,
+<a href="data.txt.gz">large gziped</a>)</li>
+<li>a <a href="hello/">Hello World Servlet</a></li>
+<li>a <a href="dump/info">Request Dump Servlet</a></li>
+<li>a <a href="session/">Session Dump Servlet</a></li>
+<li>a <a href="cookie/">Cookie Dump Servlet</a></li>
+<li>a <a href="snoop.jsp">Request Dump JSP</a></li>
+<li>a <a href="jsp/">Other JSP Tests</a></li>
+<li>a <a href="dispatch">Dispatcher Servlet</a></li>
+<li>a <a href="cgi-bin/hello.sh">CGI script</a>(unix only)</li>
+<li>a <a href="chat/chat.html">AJAX Chat with continuations</a></li>
+</ul>
+</p>
+
+<p>
+Other contexts:
+<ul>
+<li> the <a href="/javadoc/">javadoc</a> </li>
+<li> a demo of the <a href="/test-jndi">JNDI features</a></li>
+</ul>
+</p>
+
+<p>There are also more test webapps available inside the <code>examples</code> directory of the Jetty distribution for embedded Jetty, JAAS, annotations and more. Note that you will need to build these examples first.
+</p>
+
+<p>
+The features of Jetty 6 are:
+<ul>
+<li>Totally rearchitected and rebuild, so 10 years of cruft could be removed!</li>
+<li>Improved "dependancy injection" and "inversion of control" design of components</li>
+<li>Improved "interceptor" design of handlers</li>
+<li>Smart split buffer design allows large buffers to only be allocated to active connections.
+The resulting memory savings allow very large buffers to be used, which increases the chance of 
+efficient asynchronous flushing and of avoiding chunking.</li>
+<li>Optional use of NIO Buffering so that efficient direct buffers and memory mapped files can be used.</li> 
+<li>Optional use of NIO non-blocking scheduling so that threads are not allocated per connection.</li> 
+<li>Optional use of NIO gather writes, so that for example a HTTP header and a memory mapped file may be
+sent as sent is a single operation.</li> 
+<li>Continuations for efficient AJAX polling</li>
+<li>java:comp/env naming lookups</li>
+<li>pluggable JTA transaction managers</li>
+</ul>
+</p>
+
+
+</BODY>
+</HTML>

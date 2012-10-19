@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/WEB-INF/lib
+END
+struts.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/WEB-INF/lib/struts.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/WEB-INF/lib/servlet-api.jar
+END

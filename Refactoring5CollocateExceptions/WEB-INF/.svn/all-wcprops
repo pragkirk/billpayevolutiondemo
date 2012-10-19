@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF
+END
+struts-template.tld
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts-template.tld
+END
+struts-logic.tld
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts-logic.tld
+END
+app.tld
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/app.tld
+END
+struts.tld
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts.tld
+END
+struts-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts-config.xml
+END
+struts-form.tld
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts-form.tld
+END
+struts-html.tld
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts-html.tld
+END
+struts-bean.tld
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/struts-bean.tld
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/web.xml
+END

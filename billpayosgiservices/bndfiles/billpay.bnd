@@ -1,0 +1,4 @@
+Import-Package: com.extensiblejava.bill,com.extensiblejava.financial,com.extensiblejava.audit.audit1,com.extensiblejava.audit.audit2,com.extensiblejava.audit,org.osgi.framework
+Export-Package: com.extensiblejava.mediator
+Bundle-SymbolicName: billpay
+Bundle-Activator: com.extensiblejava.mediator.AuditFacadeFactory

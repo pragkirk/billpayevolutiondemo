@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <parent>
+    <artifactId>project</artifactId>
+    <groupId>org.mortbay.jetty</groupId>
+    <version>6.1.7</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.mortbay.jetty</groupId>
+  <artifactId>project-website</artifactId>
+  <packaging>pom</packaging>
+  <name>Jetty WebSite</name>
+  <version>6.1.7</version>
+  <modules>
+    <module>project-skin</module>
+    <module>project-site</module>
+  </modules>
+</project>

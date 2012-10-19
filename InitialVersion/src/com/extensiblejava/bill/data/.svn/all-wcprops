@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/bill/data
+END
+CustomerDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/bill/data/CustomerDataBean.java
+END
+BillDataBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/bill/data/BillDataBean.java
+END
+BillDb.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/bill/data/BillDb.java
+END

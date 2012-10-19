@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/lib
+END
+struts.jar
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/lib/struts.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/72/trunk/billpayevolution/billpay/Refactoring5CollocateExceptions/WEB-INF/lib/servlet-api.jar
+END

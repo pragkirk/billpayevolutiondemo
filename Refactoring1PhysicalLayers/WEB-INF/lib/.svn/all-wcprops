@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/lib
+END
+struts.jar
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/lib/struts.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/lib/servlet-api.jar
+END

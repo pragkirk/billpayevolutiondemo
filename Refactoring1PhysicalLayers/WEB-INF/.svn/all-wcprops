@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF
+END
+struts-template.tld
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts-template.tld
+END
+struts-logic.tld
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts-logic.tld
+END
+app.tld
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/app.tld
+END
+struts.tld
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts.tld
+END
+struts-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts-config.xml
+END
+struts-form.tld
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts-form.tld
+END
+struts-html.tld
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts-html.tld
+END
+struts-bean.tld
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/struts-bean.tld
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/68/trunk/billpayevolution/billpay/Refactoring1PhysicalLayers/WEB-INF/web.xml
+END

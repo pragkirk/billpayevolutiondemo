@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<JarAnalyzer>
+    <Jars>
+
+        <Jar name="jpetstore-dao.jar">
+            <Summary>
+                <Statistics>
+                    <ClassCount>15</ClassCount>
+                    <AbstractClassCount>5</AbstractClassCount>
+                    <PackageCount>2</PackageCount>
+                </Statistics>
+
+                <Metrics>
+                    <Abstractness>0.33</Abstractness>
+                    <Efferent>1</Efferent>
+                    <Afferent>1</Afferent>
+                    <Instability>0.50</Instability>
+                    <Distance>0.17</Distance>
+                </Metrics>
+
+                <Packages>
+                    <Package>org.springframework.samples.jpetstore.dao</Package>
+                    <Package>org.springframework.samples.jpetstore.dao.ibatis</Package>
+                </Packages>
+
+                <OutgoingDependencies>
+                    <Jar>jpetstore-domain.jar</Jar>
+                </OutgoingDependencies>
+
+                <IncomingDependencies>
+                    <Jar>jpetstore-domain.jar</Jar>
+                </IncomingDependencies>
+
+                <Cycles>
+                    <Cycle>jpetstore-domain.jar</Cycle>
+                </Cycles>
+
+                <UnresolvedDependencies>
+                    <Package>org.springframework.dao</Package>
+                    <Package>org.springframework.orm.ibatis</Package>
+                    <Package>org.springframework.orm.ibatis.support</Package>
+                </UnresolvedDependencies>
+            </Summary>
+
+        </Jar>
+
+        <Jar name="jpetstore-domain.jar">
+            <Summary>
+                <Statistics>
+                    <ClassCount>14</ClassCount>
+                    <AbstractClassCount>2</AbstractClassCount>
+                    <PackageCount>2</PackageCount>
+                </Statistics>
+
+                <Metrics>
+                    <Abstractness>0.14</Abstractness>
+                    <Efferent>1</Efferent>
+                    <Afferent>3</Afferent>
+                    <Instability>0.25</Instability>
+                    <Distance>0.61</Distance>
+                </Metrics>
+
+                <Packages>
+                    <Package>org.springframework.samples.jpetstore.domain</Package>
+                    <Package>org.springframework.samples.jpetstore.domain.logic</Package>
+                </Packages>
+
+                <OutgoingDependencies>
+                    <Jar>jpetstore-dao.jar</Jar>
+                </OutgoingDependencies>
+
+                <IncomingDependencies>
+                    <Jar>jpetstore-dao.jar</Jar>
+                    <Jar>jpetstore-service.jar</Jar>
+                    <Jar>jpetstore-web.jar</Jar>
+                </IncomingDependencies>
+
+                <Cycles>
+                    <Cycle>jpetstore-dao.jar</Cycle>
+                </Cycles>
+
+                <UnresolvedDependencies>
+                    <Package>org.springframework.beans.support</Package>
+                    <Package>org.springframework.validation</Package>
+                    <Package>org.springframework.mail</Package>
+                    <Package>org.springframework.aop</Package>
+                    <Package>org.springframework.beans.factory</Package>
+                    <Package>org.apache.commons.logging</Package>
+                </UnresolvedDependencies>
+            </Summary>
+
+        </Jar>
+
+        <Jar name="jpetstore-service.jar">
+            <Summary>
+                <Statistics>
+                    <ClassCount>2</ClassCount>
+                    <AbstractClassCount>0</AbstractClassCount>
+                    <PackageCount>2</PackageCount>
+                </Statistics>
+
+                <Metrics>
+                    <Abstractness>0.00</Abstractness>
+                    <Efferent>1</Efferent>
+                    <Afferent>0</Afferent>
+                    <Instability>1.00</Instability>
+                    <Distance>0.00</Distance>
+                </Metrics>
+
+                <Packages>
+                    <Package>org.springframework.samples.jpetstore.service</Package>
+                    <Package>org.springframework.samples.jpetstore.service.client</Package>
+                </Packages>
+
+                <OutgoingDependencies>
+                    <Jar>jpetstore-domain.jar</Jar>
+                </OutgoingDependencies>
+
+                <IncomingDependencies>
+                </IncomingDependencies>
+
+                <Cycles>
+                </Cycles>
+
+                <UnresolvedDependencies>
+                    <Package>org.springframework.remoting.jaxrpc</Package>
+                    <Package>org.springframework.web.context</Package>
+                    <Package>org.springframework.util</Package>
+                    <Package>org.springframework.context.support</Package>
+                    <Package>org.springframework.beans.factory</Package>
+                </UnresolvedDependencies>
+            </Summary>
+
+        </Jar>
+
+        <Jar name="jpetstore-web.jar">
+            <Summary>
+                <Statistics>
+                    <ClassCount>42</ClassCount>
+                    <AbstractClassCount>2</AbstractClassCount>
+                    <PackageCount>2</PackageCount>
+                </Statistics>
+
+                <Metrics>
+                    <Abstractness>0.05</Abstractness>
+                    <Efferent>1</Efferent>
+                    <Afferent>0</Afferent>
+                    <Instability>1.00</Instability>
+                    <Distance>0.05</Distance>
+                </Metrics>
+
+                <Packages>
+                    <Package>org.springframework.samples.jpetstore.web.spring</Package>
+                    <Package>org.springframework.samples.jpetstore.web.struts</Package>
+                </Packages>
+
+                <OutgoingDependencies>
+                    <Jar>jpetstore-domain.jar</Jar>
+                </OutgoingDependencies>
+
+                <IncomingDependencies>
+                </IncomingDependencies>
+
+                <Cycles>
+                </Cycles>
+
+                <UnresolvedDependencies>
+                    <Package>org.springframework.dao</Package>
+                    <Package>org.springframework.beans.support</Package>
+                    <Package>org.springframework.web.servlet.mvc</Package>
+                    <Package>org.springframework.validation</Package>
+                    <Package>org.springframework.web.servlet</Package>
+                    <Package>org.springframework.web.util</Package>
+                    <Package>org.springframework.util</Package>
+                    <Package>org.springframework.web.servlet.handler</Package>
+                    <Package>org.apache.struts.action</Package>
+                    <Package>org.springframework.web.context</Package>
+                    <Package>org.springframework.web.context.support</Package>
+                </UnresolvedDependencies>
+            </Summary>
+
+        </Jar>
+
+    </Jars>
+</JarAnalyzer>

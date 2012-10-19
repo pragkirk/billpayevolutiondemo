@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/test/com/extensiblejava/mediator/test
+END
+AuditFacadeFactoryTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/test/com/extensiblejava/mediator/test/AuditFacadeFactoryTest.java
+END
+BillPayerAdapterTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/test/com/extensiblejava/mediator/test/BillPayerAdapterTest.java
+END
+AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/test/com/extensiblejava/mediator/test/AllTests.java
+END

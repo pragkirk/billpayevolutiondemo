@@ -1,0 +1,54 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/WEB-INF/lib
+https://kcode.googlecode.com/svn
+
+
+
+2009-11-05T17:52:49.544692Z
+71
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+struts.jar
+file
+
+
+
+
+2012-08-01T14:31:16.000000Z
+00491863b333bd952433011fdb49cb83
+2009-11-05T17:52:49.544692Z
+71
+pragkirk
+has-props
+
+servlet-api.jar
+file
+
+
+
+
+2012-08-01T14:31:16.000000Z
+566476370176087486630d4be59829fa
+2009-11-05T17:52:49.544692Z
+71
+pragkirk
+has-props
+

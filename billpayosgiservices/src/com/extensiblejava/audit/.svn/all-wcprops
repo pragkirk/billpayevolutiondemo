@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/src/com/extensiblejava/audit
+END
+AuditException.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/src/com/extensiblejava/audit/AuditException.java
+END
+Auditable.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/src/com/extensiblejava/audit/Auditable.java
+END
+AuditFacade.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/src/com/extensiblejava/audit/AuditFacade.java
+END

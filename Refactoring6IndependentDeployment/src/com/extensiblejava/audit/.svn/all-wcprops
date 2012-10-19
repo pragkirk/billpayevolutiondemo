@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/73/trunk/billpayevolution/billpay/Refactoring6IndependentDeployment/src/com/extensiblejava/audit
+END
+AuditException.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/73/trunk/billpayevolution/billpay/Refactoring6IndependentDeployment/src/com/extensiblejava/audit/AuditException.java
+END
+Auditable.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/73/trunk/billpayevolution/billpay/Refactoring6IndependentDeployment/src/com/extensiblejava/audit/Auditable.java
+END
+AuditFacade.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/73/trunk/billpayevolution/billpay/Refactoring6IndependentDeployment/src/com/extensiblejava/audit/AuditFacade.java
+END

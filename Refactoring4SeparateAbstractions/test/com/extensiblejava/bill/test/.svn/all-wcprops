@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/test/com/extensiblejava/bill/test
+END
+BillTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/test/com/extensiblejava/bill/test/BillTest.java
+END
+BillDbTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/test/com/extensiblejava/bill/test/BillDbTest.java
+END
+AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/!svn/ver/71/trunk/billpayevolution/billpay/Refactoring4SeparateAbstractions/test/com/extensiblejava/bill/test/AllTests.java
+END

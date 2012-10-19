@@ -1,0 +1,75 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/billpayosgiservices
+https://kcode.googlecode.com/svn
+
+
+
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+test
+dir
+
+META-INF
+dir
+
+buildlib
+dir
+
+bndfiles
+dir
+
+WEB-INF
+dir
+
+src
+dir
+
+webjsp
+dir
+
+readme.txt
+file
+
+
+
+
+2012-08-01T14:31:10.000000Z
+a8fd4d437dba01b9c143f5faf4b4f384
+2009-12-09T05:05:53.845939Z
+76
+pragkirk
+has-props
+
+billpaybuild.xml
+file
+111
+
+
+
+2012-08-01T15:08:30.000000Z
+46aaf78f6648272c952deac8c8dae5c0
+2012-08-01T15:09:28.291951Z
+111
+pragkirk
+has-props
+

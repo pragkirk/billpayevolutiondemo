@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.5.0_10 (Sun Microsystems Inc.)
+TODAY: September 19 2007
+Import-Package: com.extensiblejava.audit,com.extensiblejava.bill,com.extensiblejava.mediator,javax.servlet,javax.servlet.http,org.osgi.framework,org.osgi.service.http,org.osgi.util.tracker,javax.servlet.jsp,javax.servlet.jsp.el,javax.servlet.jsp.jstl.core,javax.servlet.jsp.jstl.fmt,javax.servlet.jsp.jstl.sql,javax.servlet.jsp.jstl.tlv,javax.servlet.jsp.tagext,javax.xml.parsers,org.xml.sax,javax.sql
+Bnd-LastModified: 1190228040382
+DSTAMP: 20070919
+TSTAMP: 1353
+Bundle-Version: 0
+Bundle-Name: billpayui
+Bundle-ClassPath: WEB-INF/classes,WEB-INF/lib/struts.jar
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: billpayui
+Web-ContextPath: /bill-pay
+Tool: Bnd-0.0.187
+

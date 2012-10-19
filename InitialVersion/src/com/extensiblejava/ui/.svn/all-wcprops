@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui
+END
+CustomerSearchResultsBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/CustomerSearchResultsBean.java
+END
+BillDetailAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/BillDetailAction.java
+END
+AuditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/AuditAction.java
+END
+CustomerSearchAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/CustomerSearchAction.java
+END
+PayAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/PayAction.java
+END
+BillDetailForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/BillDetailForm.java
+END
+CustomerSearchForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/66/trunk/billpayevolution/billpay/InitialVersion/src/com/extensiblejava/ui/CustomerSearchForm.java
+END

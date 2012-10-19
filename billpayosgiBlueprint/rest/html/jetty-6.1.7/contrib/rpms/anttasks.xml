@@ -1,0 +1,37 @@
+<project name="Jetty Source RPM" default="download-if-not-found" basedir=".">
+
+    <target name="zip-if-not-found">
+        <condition property="need.download">
+            <available file="${project.build.directory}/rpm/SOURCES/jetty-${project.version}-src.zip" type="file" property="src.present"/>
+        </condition>
+        <antcall target="dontZip"/>
+        <antcall target="zip"/>
+    </target>
+
+    <target name="dontZip" if="need.zip">
+        <echo>No Need To Zip Source</echo>
+    </target>
+
+    <target name="zip" unless="need.zip">
+      <zip destfile="${project.build.directory}/rpm/SOURCES/jetty-${project.version}-src.zip">
+        <zipfileset dir="../.." prefix="jetty-${project.version}">
+	  <include name="**"/>
+	  <exclude name="**/.*/**"/>
+	  <exclude name="**/target/**"/>
+	  <exclude name="webapps/**"/>
+	  <exclude name="lib/**"/>
+	  <exclude name="logs/**"/>
+	</zipfileset>
+        <zipfileset dir="../.." prefix="jetty-${project.version}">
+	  <include name="modules/jsp-api-2.1/target/glassfish/**"/>
+	  <include name="modules/jsp-api-2.1/target/generated-sources/**"/>
+	  <include name="modules/jsp-2.1/target/glassfish/**"/>
+	  <include name="modules/jsp-2.1/target/generated-sources/**"/>
+          <include name="webapps/README.TXT"/>
+	  <exclude name="**/.*/**"/>
+	</zipfileset>
+      </zip>
+    </target>
+                
+</project>
+

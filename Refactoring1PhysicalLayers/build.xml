@@ -1,0 +1,72 @@
+<project name="Proof" default="bundle" basedir=".">
+
+	<property name="javasrc" location="${basedir}/src"/>
+	<property name="testsrc" location="${basedir}/test"/>
+	<property name="build" location="${basedir}/build"/>
+	<property name="bindist" location="${basedir}/bin"/>
+	<property name="deploy" location="${basedir}/deploy"/>
+	<property name="lib" location="${basedir}/WEB-INF/lib"/>
+	<property name="buildlib" location="${basedir}/buildlib"/>
+	<property name="version" value="1.0"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${javasrc}"/>
+		<pathelement path="${testsrc}"/>
+		<pathelement location="${lib}/struts.jar"/>
+		<pathelement location="${lib}/servlet-api.jar"/>
+		<pathelement location="${buildlib}/junit.jar"/>
+	</path>
+	
+	<target name="clean" description="clean up">
+		<delete dir="${bindist}"/>
+		<delete dir="${deploy}"/>
+		<delete dir="${build}"/>
+		<delete file="junitresults.txt"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="${javasrc}:${testsrc}" destdir="${build}">
+			<classpath refid="project.class.path"/>
+		</javac>
+	</target>
+	
+	<target name="dist" depends="compile">
+		<mkdir dir="${bindist}"/>
+		<!-- <jar jarfile="${bindist}/bill.jar" basedir="${build}" includes="com/extensiblejava/bill/**" excludes="com/extensiblejava/bill/test/**"/>
+		<jar jarfile="${bindist}/route.jar" basedir="${build}" includes="com/extensiblejava/route/**"/>
+		<jar jarfile="${bindist}/audit.jar" basedir="${build}" includes="com/extensiblejava/audit/**"/> -->
+		<jar jarfile="${bindist}/bill.jar" basedir="${build}" excludes="com/extensiblejava/bill/test/**, com/extensiblejava/ui/**"/>
+		<jar jarfile="${bindist}/test.jar" basedir="${build}" includes="com/extensiblejava/bill/test/**"/>
+		
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${bindist}/test.jar"/>
+				<pathelement path="${bindist}/bill.jar"/>
+				<pathelement path="${buildlib}/junit.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.bill.test.AllTests" outfile="junitresults">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+	</target>
+	
+	<target name="bundle" depends="dist">
+		<mkdir dir="${deploy}"/>
+		<war destfile="${deploy}/billpay.war" webxml="WEB-INF/web.xml">
+  			<fileset dir="jsp"/>
+  			<webinf dir="WEB-INF">
+  				<exclude name="web.xml"/>
+  				<exclude name="lib/servlet-api.jar"/>
+  			</webinf>
+  			<lib dir="${bindist}" excludes="test.jar"/>
+  			<classes dir="${build}" includes="com/extensiblejava/ui/**"/>  			
+   		</war>
+	</target>
+	
+</project>

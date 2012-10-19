@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <parent>
+    <artifactId>project-website</artifactId>
+    <groupId>org.mortbay.jetty</groupId>
+    <version>6.1.7</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.mortbay.jetty</groupId>
+  <artifactId>project-site</artifactId>
+  <packaging>pom</packaging>
+  <name>Jetty Site</name>
+  <version>6.1.7</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>exec-plugin-doc</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>../../modules/maven-plugin</workingDirectory>
+              <arguments>
+                <argument>-Dmaven.test.skip=true</argument>
+                <argument>plugin:xdoc</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>exec-jspc-plugin-doc</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>../../modules/jspc-maven-plugin</workingDirectory>
+              <arguments>
+                <argument>-Dmaven.test.skip=true</argument>
+                <argument>plugin:xdoc</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>exec-site</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>mvn</executable>
+              <workingDirectory>../..</workingDirectory>
+              <arguments>
+                <argument>-Dmaven.test.skip=true</argument>
+                <argument>site</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <delete failonerror="false" includeemptydirs="true">
+                 <fileset dir="${basedir}/../../javadoc" includes="**/**"/> 
+                </delete>
+              </tasks>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copyfile</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <copy file="${basedir}/../../README.txt" todir="${basedir}/target/site/" failonerror="false"></copy>
+                <copy file="${basedir}/../../VERSION.txt" todir="${basedir}/target/site/" failonerror="false"></copy>
+                <copy file="${basedir}/../../LICENSES/LICENSE.txt" todir="${basedir}/target/site/" failonerror="false"></copy>
+                <copy todir="${basedir}/target/site/apidocs" failonerror="false" overwrite="true">
+                  <fileset dir="${basedir}/../../target/site/apidocs">
+                    <include name="**/**"/>
+                  </fileset>
+                </copy>
+                <copy todir="${basedir}/target/site/xref" failonerror="false" overwrite="true">
+                  <fileset dir="${basedir}/../../target/site/xref">
+                    <include name="**/**"/>
+                  </fileset>
+                </copy>
+                <copy todir="${basedir}/target/site/xref-test" failonerror="false" overwrite="true">
+                  <fileset dir="${basedir}/../../target/site/xref-test">
+                    <include name="**/**"/>
+                  </fileset>
+                </copy>
+                <copy todir="${basedir}/target/generated-site/xdoc/maven-plugin" failonerror="false" overwrite="true">
+                  <fileset dir="${basedir}/../../modules/maven-plugin/target/generated-site/xdoc">
+                    <include name="index.xml"/>
+                    <include name="run-mojo.xml"/>
+                    <include name="run-war-mojo.xml"/>
+                    <include name="run-exploded-mojo.xml"/>
+                  </fileset>
+                </copy>
+                <copy todir="${basedir}/target/generated-site/xdoc/jspc-maven-plugin" failonerror="false" overwrite="true">
+                  <fileset dir="${basedir}/../../modules/jspc-maven-plugin/target/generated-site/xdoc">
+                    <include name="index.xml"/>
+                    <include name="jspc-mojo.xml"/>
+                  </fileset>
+                </copy>
+                <copy todir="${basedir}/target/site" overwrite="true">
+                  <fileset dir="${basedir}/../../modules/jetty/target/classes/org/mortbay/xml">
+                    <include name="*.dtd"/>
+                  </fileset>
+                </copy>
+                <copy file="${basedir}/target/site/configure_6_0.dtd" tofile="${basedir}/target/site/configure.dtd"/>
+                <copy file="${basedir}/target/site/configure_6_0.dtd" tofile="${basedir}/target/site/configure_1_0.dtd"/>
+                <copy file="${basedir}/target/site/configure_6_0.dtd" tofile="${basedir}/target/site/configure_1_1.dtd"/>
+                <copy file="${basedir}/target/site/configure_6_0.dtd" tofile="${basedir}/target/site/configure_1_2.dtd"/>
+              </tasks>
+            </configuration>
+          </execution>
+          <execution>
+            <id>javadoc</id>
+            <phase>install</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <copy failonerror="false" todir="../../javadoc" >
+                  <fileset dir="${basedir}/target/site/apidocs">
+                    <include name="**"/>
+                  </fileset>
+                </copy>
+              </tasks>
+	    </configuration>
+	  </execution>
+        </executions>
+      </plugin>
+      <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-site-plugin</artifactId>
+       <executions>
+          <execution>
+            <id>site</id>
+            <phase>install</phase>
+            <goals>
+              <goal>site</goal>
+            </goals>
+          </execution>
+         <configuration>
+         </configuration>
+       </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <reporting/>
+</project>

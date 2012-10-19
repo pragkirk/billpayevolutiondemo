@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles
+END
+auditspec.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/auditspec.bnd
+END
+bill.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/bill.bnd
+END
+financial.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/financial.bnd
+END
+audit1.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/audit1.bnd
+END
+audit2.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/audit2.bnd
+END
+billpayui.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/billpayui.bnd
+END
+billpay.bnd
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/76/trunk/billpayevolution/billpay/billpayosgiservices/bndfiles/billpay.bnd
+END

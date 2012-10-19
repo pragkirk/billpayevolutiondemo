@@ -1,0 +1,4 @@
+Import-Package: com.extensiblejava.audit,org.osgi.framework
+Export-Package: com.extensiblejava.audit.audit1
+Bundle-SymbolicName: Audit1
+Bundle-Activator: com.extensiblejava.audit.audit1.AuditFacade1

@@ -1,0 +1,229 @@
+body {
+  background-color: #fff;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 13px;
+	padding: 0px;
+}
+td, select, input, li{
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size: 12px;
+}
+code{
+  font-family: Courier, monospace;
+  font-size: 12px;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #4876FF;
+}
+a:visited  {
+  color: #4876FF;
+}
+a:active, a:hover {
+  color:#ff6600;
+}
+#legend li.externalLink {
+  background: url(../images/external.png) left top no-repeat;
+  padding-left: 18px;
+}
+a.externalLink, a.externalLink:link, a.externalLink:visited, a.externalLink:active, a.externalLink:hover {
+  padding-right: 18px;
+}
+#legend li.newWindow {
+  background: url(../images/newwindow.png) left top no-repeat;
+  padding-left: 18px;
+}
+a.newWindow, a.newWindow:link, a.newWindow:visited, a.newWindow:active, a.newWindow:hover {
+  background: url(../images/newwindow.png) right center no-repeat;
+  padding-right: 18px;
+}
+
+h1 {
+  color: #000099;
+  padding: 4px 4px 4px 6px;
+  border: 0px;
+  background-color: #ffffff;
+  font-weight:bold;
+}
+h2 {
+  color: #000099;
+  padding: 4px 4px 4px 6px;
+  border: 0px;
+  background-color: #ffffff;
+  font-weight:bold;
+  font-size: large;
+
+}
+h3 {
+  color: #000099;
+  padding: 4px 4px 4px 6px;
+  border: 0px;
+  background-color: #ffffff;
+  font-weight: bold;
+  font-size: medium;
+}
+h4 {
+  color: #000099;
+  padding: 4px 4px 4px 6px;
+  border: 0px;
+  background-color: #ffffff;
+  font-weight: normal;
+  font-size: medium;
+}
+h5 {
+  color: #000099;
+  padding: 4px 4px 4px 6px;
+  font-size: medium;
+}
+
+p {
+  line-height: 1.3em;
+  font-size: 12px;
+  color: #000;
+}
+#breadcrumbs {
+  border-bottom: 2px ridge #4876FF;
+  background-color: #4876FF;
+  color: #ffffff;
+  padding: 3px 10px 3px 10px;
+  font-size: x-small;
+  margin: 0pt;
+}
+* html #breadcrumbs {
+	padding-bottom: 8px;
+}
+#leftColumn {
+  margin: 0px 0 0 0px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 2px solid #4876FF;
+  border-bottom:  2px solid #4876FF;
+  background-color: #FFFFFF;
+}
+#navcolumn h5 {
+  text-align:right;
+  vertical-align: middle;
+  font-size: 8pt;
+  font-weight: bold;
+  font-variant: normal;
+  text-decoration: none;
+  padding-left: 0px;
+  padding-top: 12px;
+  padding-bottom: 2px;
+  padding-right: 10px;
+  color: #000099;
+  border-bottom: 1px solid #4876FF;
+}
+
+table.bodyTable th {
+  color: #666699;
+  font-variant: small-caps;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+table.bodyTable th, table.bodyTable td {
+  font-size: 11px;
+}
+
+table.bodyTable tr.a {
+  border-bottom: 1px solid #aaaaaa;
+}
+
+table.bodyTable tr.b {
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.source {
+  border: 1px solid #999;
+}
+dt {
+  color: #900;
+}
+dl {
+  padding: 4px 4px 4px 6px;
+  border: 1px solid #aaa;
+  background-color: #ffc;
+}
+
+.subsectionTitle {
+	font-size: 13px;
+	font-weight: bold;
+	color: #666;
+
+}
+
+table {
+	font-size: 10px;
+}
+.xright a:link, .xright a:visited, .xright a:active {
+  color: #4876FF;
+}
+.xright a:hover {
+  color:#ff6600;
+}
+#banner {
+  padding: 0px;
+  background-image:  url(../images/background.gif);
+  background-repeat: repeat;
+  clear:both;
+  border-bottom: 1px ridge #4876FF;
+}
+
+#banner img {
+}
+
+#navcolumn li {
+  color: #4876FF;
+  text-align:right;
+  padding-right: 10px;
+  padding-top: 2px;
+}
+
+#navcolumn ul {
+	margin: 5px 0 15px -0em;
+}
+
+#intro {
+	border: solid #ccc 1px;
+	margin: 6px 0px 0px 0px;
+	padding: 10px 40px 10px 40px;
+}
+.subsection {
+	margin-left: 3px;
+	color: #333333;
+}
+
+.subsection p {
+	font-size: 12px;
+}
+#footer {
+  padding: 10px;
+  margin: 20px 0px 20px 0px;
+  border-top: solid #ccc 1px; 
+  color: #000099;
+}
+
+.errormark, .warningmark, .donemark, .infomark {
+  background: url(../images/icon_error_sml.gif) no-repeat;
+}
+
+.warningmark {
+  background-image: url(../images/icon_warning_sml.gif);
+}
+
+.donemark {
+  background-image: url(../images/icon_success_sml.gif);
+}
+
+.infomark {
+  background-image: url(../images/icon_info_sml.gif);
+}
+#organizationLogo img, #projectLogo img, #projectLogo span{
+  margin: 8px;
+}

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/src/com/extensiblejava/mediator
+END
+AuditFacadeFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/src/com/extensiblejava/mediator/AuditFacadeFactory.java
+END
+BillPayerAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/!svn/ver/74/trunk/billpayevolution/billpay/Refactoring7ImplementationFactory/src/com/extensiblejava/mediator/BillPayerAdapter.java
+END

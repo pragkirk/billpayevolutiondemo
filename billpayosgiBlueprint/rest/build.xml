@@ -1,0 +1,127 @@
+<project name="Proof" default="appcompile" basedir=".">
+
+	<property name="javasrc" location="${basedir}/src"/>
+	<property name="buildstats" location="${basedir}/buildstats"/>
+	<property name="testsrc" location="${basedir}/test"/>
+	<property name="build" location="${basedir}/build"/>
+	<property name="buildlib" location="${basedir}/buildlib"/>
+	<property name="buildsrc" location="${basedir}/buildsrc"/>
+	<property name="bindist" location="${basedir}/bin"/>
+	<property name="deploy" location="${basedir}/deploy"/>
+	<property name="lib" location="${basedir}/WEB-INF/lib"/>
+	<property name="binosgi" location="${basedir}/binosgi"/>
+	<property name="web" location="${basedir}/web"/>
+	<property name="version" value="1.0"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${javasrc}"/>
+		<pathelement path="${testsrc}"/>
+		<pathelement location="${lib}/jersey-core.jar"/>
+	</path>
+	
+	<target name="clean" description="clean up">
+		<delete dir="${bindist}"/>
+		<delete dir="${deploy}"/>
+		<delete dir="${build}"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${buildstats}"/>
+		<delete dir="${binosgi}"/>
+		<delete dir="${web}"/>
+		<delete file="${basedir}/billtest.txt"/>
+		<delete file="${basedir}/billpaytest.txt"/>
+		<delete file="${basedir}/financialtest.txt"/>
+		<delete file="${basedir}/audit1test.txt"/>
+		<delete file="${basedir}/audit2test.txt"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<tstamp/>
+		<mkdir dir="${bindist}"/>
+		<mkdir dir="${buildstats}"/>
+		<mkdir dir="${binosgi}"/>
+	</target>
+	
+	<target name="appcompile" depends="init">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/rest/**"/>
+			</fileset>
+		</copy>
+		<copy todir="${binosgi}">
+			<fileset dir="${basedir}/../binosgi">
+				<include name="auditspec.jar"/>
+				<include name="billpay.jar"/>
+				<include name="bill.jar"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${buildlib}/jersey-core.jar"/>
+				<pathelement location="${buildlib}/jersey-json.jar"/>
+				<pathelement location="${buildlib}/jettison.jar"/>
+				<pathelement location="${binosgi}/bill.jar"/>
+				<pathelement location="${binosgi}/../binosgi/auditspec.jar"/>
+				<pathelement location="${binosgi}/billpay.jar"/>
+			</classpath>
+		</javac>
+		
+		<mkdir dir="${web}"/>
+		<!-- <mkdir dir="${web}/web"/> -->
+		<!-- <mkdir dir="${web}/META-INF"/> -->
+		<mkdir dir="${web}/WEB-INF"/>
+		<mkdir dir="${web}/WEB-INF/lib"/>
+		<mkdir dir="${web}/WEB-INF/classes"/>
+	
+		<copy todir="${web}/WEB-INF/classes">
+			<fileset dir="${build}"/>
+		</copy>
+		<copy todir="${web}/WEB-INF">
+			<fileset dir="${basedir}/WEB-INF">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+		
+		<copy file="${basedir}/META-INF/spring/billpayrest-osgi.xml" todir="${web}/META-INF/spring"/>
+		<copy file="${basedir}/META-INF/spring/billpayrest.xml" todir="${web}/META-INF/spring"/>
+		<jar jarfile="${binosgi}/billpayrest.jar" basedir="${web}" manifest="META-INF/MANIFEST.MF" includes="**/* META-INF/spring/billpay.xml META-INF/spring/billpay-osgi.xml"/>
+	</target>
+	
+	<target name="analyzer" depends="appcompile">
+
+		<copy todir="${buildstats}">
+			<fileset dir="${bindist}">
+				<exclude name="*test.jar"/>
+			</fileset>
+		</copy>
+		
+        <taskdef name="jaranalyzer" classname="com.kirkk.analyzer.textui.JarAnalyzerTask">
+            <classpath>
+                <pathelement path="${buildlib}/jaranalyzer-1.2.jar"/>
+                <pathelement path="${buildlib}/lib/bcel-5.2.jar"/>
+                <pathelement path="${buildlib}/lib/jakarta-regexp-1.3.jar"/>
+                <pathelement path="${buildlib}/lib"/>
+            </classpath>
+        </taskdef>
+
+        <jaranalyzer srcdir="${binosgi}" destfile="${buildstats}/appdependencies.xml" 
+				summaryclass="com.kirkk.analyzer.textui.XMLUISummary" />
+			
+		<style in="${buildstats}/appdependencies.xml"
+	        out="${buildstats}/appdependencies-new.html"
+			style="${buildlib}/jaranalyzer.xsl">	
+		</style>
+		
+		<style in="${buildstats}/appdependencies.xml"
+	        out="${buildstats}/appdependencies-new.grph"
+			style="${buildlib}/jaranalyzer2dot.xsl">	
+		</style>
+
+				
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./buildstats/appdependencies-new.grph -o ./buildstats/appdependencies-new.png"/></exec>
+
+	</target>
+	
+</project>

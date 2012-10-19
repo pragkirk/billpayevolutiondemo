@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/audit
+END
+Auditable.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/audit/Auditable.java
+END
+AuditFacade.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/audit/AuditFacade.java
+END
+AuditFacade1.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/70/trunk/billpayevolution/billpay/Refactoring3AcyclicRelationships/src/com/extensiblejava/audit/AuditFacade1.java
+END

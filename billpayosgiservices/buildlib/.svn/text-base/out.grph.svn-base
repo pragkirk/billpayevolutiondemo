@@ -1,0 +1,6 @@
+digraph G {
+    jpetstore_dao -> jpetstore_domain;
+    jpetstore_domain -> jpetstore_dao;
+    jpetstore_service -> jpetstore_domain;
+    jpetstore_web -> jpetstore_domain;
+}

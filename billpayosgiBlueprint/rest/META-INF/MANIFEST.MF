@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.5.0_10 (Sun Microsystems Inc.)
+TODAY: September 19 2007
+Import-Package: com.extensiblejava.audit,com.extensiblejava.bill,com.extensiblejava.mediator,javax.ws.rs,org.codehaus.jettison.json,com.sun.jersey.api.json
+Export-Package: com.extensiblejava.rest
+Bundle-ClassPath: WEB-INF/classes
+Bundle-Version: 0
+Bundle-Name: billpayrest
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: billpayrest
+Web-ContextPath: /bill-pay-rest
+Tool: Bnd-0.0.187

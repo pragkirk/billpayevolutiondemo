@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/84/trunk/billpayevolution/billpay/Refactoring2AbstractComponents
+END
+clean.bat
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/69/trunk/billpayevolution/billpay/Refactoring2AbstractComponents/clean.bat
+END
+cmd.bat
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/69/trunk/billpayevolution/billpay/Refactoring2AbstractComponents/cmd.bat
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/84/trunk/billpayevolution/billpay/Refactoring2AbstractComponents/build.xml
+END

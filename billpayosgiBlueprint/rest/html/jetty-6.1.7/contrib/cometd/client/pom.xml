@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>cometd</artifactId>
+    <groupId>org.mortbay.jetty</groupId>
+    <version>6.1.7</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.mortbay.jetty</groupId>
+  <version>6.1.7</version>
+  <artifactId>bayeux-client</artifactId>
+  <packaging>jar</packaging>
+  <name>bayeux java client</name>
+  <url>http://www.cometd.com</url>
+  <licenses>
+    <license>
+      <name>Apache License Version 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <build>
+    <defaultGoal>install</defaultGoal>
+    <plugins>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copyfiles</id>
+            <phase>install</phase>
+            <goals><goal>run</goal></goals>
+            <configuration>
+              <tasks>
+                <copy failonerror="false" file="target/${project.artifactId}-${project.version}.${project.packaging}"
+		todir="../../../lib/cometd" />
+              </tasks>
+            </configuration>
+          </execution>
+          <execution>
+            <id>clean</id>
+            <phase>clean</phase>
+            <goals><goal>run</goal></goals>
+            <configuration>
+              <tasks>
+                <delete failonerror="false" file="../../../lib/cometd/${project.artifactId}-${project.version}.${project.packaging}"/>
+              </tasks>
+            </configuration>
+          </execution>		  
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty-util</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty-client</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>cometd-bayeux</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>servlet-api-2.5</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

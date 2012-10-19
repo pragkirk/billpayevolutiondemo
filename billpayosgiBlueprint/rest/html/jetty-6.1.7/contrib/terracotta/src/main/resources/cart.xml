@@ -1,0 +1,70 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!-- ==================================================================
+Configure and deploy the test web application in $(jetty.home)/webapps/test
+
+Note. If this file did not exist or used a context path other that /test
+then the default configuration of jetty.xml would discover the test
+webapplication with a WebAppDeployer.  By specifying a context in this
+directory, additional configuration may be specified and hot deployments 
+detected.
+===================================================================== -->
+
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Required minimal context configuration :                        -->
+  <!--  + contextPath                                                  -->
+  <!--  + war OR resourceBase                                          -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Set name="contextPath">/Cart</Set>
+  <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/Cart.war</Set>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Optional context configuration                                  -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Set name="extractWAR">true</Set>
+  <Set name="copyWebDir">false</Set>
+  <Set name="defaultsDescriptor"><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Set>
+
+  <!-- virtual hosts
+  <Set name="virtualHosts">
+    <Array type="String">
+      <Item>www.myVirtualDomain.com</Item>
+      <Item>localhost</Item>
+      <Item>127.0.0.1</Item>
+    </Array>
+  </Set>
+  -->
+<Property name="Server" id="Server">
+  <Call id="tcIdMgr" name="getAttribute">
+    <Arg>tcIdMgr</Arg>
+  </Call>
+</Property>
+
+
+ <New id="tcmgr" class="org.mortbay.terracotta.servlet.TerracottaSessionManager">
+   <Set name="idManager">
+     <Ref id="tcIdMgr"/>
+   </Set>
+ </New>
+
+
+ <Set name="sessionHandler">
+   <New class="org.mortbay.jetty.servlet.SessionHandler">
+     <Arg><Ref id="tcmgr"/></Arg>
+   </New>
+ </Set> 
+
+  <Get name="securityHandler">
+    <Set name="userRealm">
+      <New class="org.mortbay.jetty.security.HashUserRealm">
+	<Set name="name">Test Realm</Set>
+	<Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+      </New>
+    </Set>
+  </Get>
+
+</Configure>

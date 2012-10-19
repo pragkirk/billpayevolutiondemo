@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<project name="jetty6">
+  <skin>
+    <groupId>org.mortbay.jetty</groupId>
+    <artifactId>jetty-skin</artifactId>
+    <version>6.1.7</version>
+  </skin>
+  <bannerLeft>
+    <name>Jetty</name>
+    <src>./images/jetty_banner.gif</src>
+    <href>http://jetty.mortbay.org/jetty</href>
+  </bannerLeft>
+  <publishDate format="dd MMMM yyyy HH:mm"/>
+  <body>
+    <menu name="About Jetty">
+      <item name="Home" href="index.html"/>
+      <item name="License" href="LICENSE.txt"/>
+      <item name="Jetty Powered" href="http://docs.codehaus.org/display/JETTY/Jetty+Powered"/>
+    </menu>
+    <menu name="Resources">
+      <item name="Downloads" href="http://docs.codehaus.org/display/JETTY/Downloading+and+Installing#download"/>
+      <item name="Resources" href="http://docs.codehaus.org/display/JETTY/Jetty+Wiki"/>
+      <item name="Documentation" href="http://docs.codehaus.org/display/JETTY/Jetty+Documentation"/>
+      <item name="JavaDoc" href="apidocs/index.html"/>
+      <item name="Source XRef" href="xref/index.html"/>
+    </menu>
+    <menu name="Maven Plugins">
+      <item name="maven-jetty-plugin" href="http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin"/>
+      <item name="maven-jetty-jspc-plugin" href="http://docs.codehaus.org/display/JETTY/Maven+Jetty+Jspc+Plugin"/>
+    </menu>
+    <menu name="Commercial Services">
+      <item name="Support" href="http://www.webtide.com/support.jsp"/>
+      <item name="Training" href="http://www.webtide.com/training.jsp"/>
+      <item name="Consulting" href="http://www.webtide.com/development.jsp"/>
+    </menu>
+  </body>
+  <poweredBy>
+    <logo name="jetty" href="http://docs.codehaus.org/display/JETTY/Jetty+Powered" img="./images/small_powered_by.gif"/>
+    <logo name="webtide" href="http://www.webtide.com" img="./images/webtide_logo.jpg"/>
+    <logo name="Maven" href="http://maven.apache.org" img="./images/logos/maven-feather.png"/>
+    <logo name="Codehaus" href="http://www.codehaus.org" img="./images/codehaus-small.png"/>
+    <logo name="INETU" href="http://www.inetu.net" img="./images/inetu.gif"/>
+  </poweredBy>
+</project>

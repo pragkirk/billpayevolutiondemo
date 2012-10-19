@@ -1,0 +1,384 @@
+<project name="Proof" default="bundle" basedir=".">
+
+	<property name="javasrc" location="${basedir}/src"/>
+	<property name="testsrc" location="${basedir}/test"/>
+	<property name="build" location="${basedir}/build"/>
+	<property name="buildsrc" location="${basedir}/buildsrc"/>
+	<property name="bindist" location="${basedir}/bin"/>
+	<property name="deploy" location="${basedir}/deploy"/>
+	<property name="lib" location="${basedir}/WEB-INF/lib"/>
+	<property name="buildlib" location="${basedir}/buildlib"/>
+	<property name="version" value="1.0"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${javasrc}"/>
+		<pathelement path="${testsrc}"/>
+		<pathelement location="${lib}/struts.jar"/>
+		<pathelement location="${lib}/servlet-api.jar"/>
+		<pathelement location="${buildlib}/junit.jar"/>
+	</path>
+	
+	<target name="clean" description="clean up">
+		<delete dir="${bindist}"/>
+		<delete dir="${deploy}"/>
+		<delete dir="${build}"/>
+		<delete dir="${buildsrc}"/>
+		<delete file="billtest.txt"/>
+		<delete file="financialtest.txt"/>
+		<delete file="audit1test.txt"/>
+		<delete file="audit2test.txt"/>
+		<delete file="billpaytest.txt"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<tstamp/>
+		<mkdir dir="${bindist}"/>
+	</target>
+	
+	<target name="auditspeccompile" depends="init">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/audit/**"/>
+				<exclude name="com/extensiblejava/audit/audit1/**"/>
+				<exclude name="com/extensiblejava/audit/audit2/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/auditspec.jar" basedir="${build}" includes="com/extensiblejava/audit/**"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="audit1compile" depends="auditspeccompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/audit/audit1/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/audit1.jar" basedir="${build}" includes="com/extensiblejava/audit/audit1/**"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="audit1testcompile" depends="audit1compile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/test/**"/>
+				<exclude name="com/extensiblejava/financial/test/**"/>
+				<exclude name="com/extensiblejava/audit2/test/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement location="${bindist}/audit1.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/audit1test.jar" basedir="${build}"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement path="${bindist}/audit1.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.audit1.test.AllTests" outfile="audit1test">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	
+		<target name="audit2compile" depends="audit1testcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/audit/audit2/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/audit2.jar" basedir="${build}" includes="com/extensiblejava/audit/audit2/**"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="audit2testcompile" depends="audit2compile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/test/**"/>
+				<exclude name="com/extensiblejava/financial/test/**"/>
+				<exclude name="com/extensiblejava/audit1/test/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement location="${bindist}/audit2.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/audit2test.jar" basedir="${build}"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement path="${bindist}/audit2.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.audit2.test.AllTests" outfile="audit2test">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="financialcompile" depends="audit2testcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/financial/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/financial.jar" basedir="${build}" includes="com/extensiblejava/financial/**"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="financialtestcompile" depends="financialcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/test/**"/>
+				<exclude name="com/extensiblejava/audit1/test/**"/>
+				<exclude name="com/extensiblejava/audit2/test/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${bindist}/financial.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/financialtest.jar" basedir="${build}"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${bindist}/financial.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.financial.test.AllTests" outfile="financialtest">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billcompile" depends="financialtestcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<exclude name="com/extensiblejava/audit/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+				<exclude name="com/extensiblejava/mediator/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${bindist}/auditspec.jar"/>
+				<pathelement location="${bindist}/financial.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/bill.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billtestcompile" depends="billcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/audit1/**"/>
+				<exclude name="com/extensiblejava/audit2/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+				<exclude name="com/extensiblejava/mediator/test/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${bindist}/auditspec.jar"/>
+				<pathelement path="${bindist}/audit1.jar"/>
+				<pathelement path="${bindist}/audit2.jar"/>
+				<pathelement location="${bindist}/financial.jar"/>
+				<pathelement location="${bindist}/bill.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/billtest.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${bindist}/billtest.jar"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement path="${bindist}/audit1.jar"/>
+				<pathelement path="${bindist}/audit2.jar"/>
+				<pathelement path="${bindist}/financial.jar"/> 
+				<pathelement path="${bindist}/bill.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.bill.test.AllTests" outfile="billtest">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billpaycompile" depends="billtestcompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<exclude name="com/extensiblejava/audit/**"/>
+				<exclude name="com/extensiblejava/bill/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${bindist}/bill.jar"/>
+				<pathelement location="${bindist}/financial.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/billpay.jar" basedir="${build}"/>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="billpaytestcompile" depends="billpaycompile">
+		<mkdir dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${testsrc}">
+				<exclude name="com/extensiblejava/bill/**"/>
+				<exclude name="com/extensiblejava/audit1/**"/>
+				<exclude name="com/extensiblejava/audit2/**"/>
+				<exclude name="com/extensiblejava/financial/**"/>
+				<exclude name="com/extensiblejava/ui/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${bindist}/financial.jar"/>
+				<pathelement location="${bindist}/bill.jar"/>
+				<pathelement location="${bindist}/billpay.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+		</javac>
+		<jar jarfile="${bindist}/billpaytest.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build}"/>
+				<pathelement path="${bindist}/billpaytest.jar"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement path="${bindist}/billpay.jar"/> 
+				<pathelement path="${bindist}/financial.jar"/> 
+				<pathelement path="${bindist}/bill.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
+			</classpath>
+			<test name="com.extensiblejava.mediator.test.AllTests" outfile="billpaytest">
+				<formatter type="plain"/>
+			</test>
+		</junit>
+		<delete dir="${buildsrc}"/>
+		<delete dir="${build}"/>
+	</target>
+	
+	<target name="appcompile" depends="billpaytestcompile">
+		<!-- <mkdir dir="${buildsrc}"/> -->
+		<mkdir dir="${build}"/>
+		<copy todir="${buildsrc}">
+			<fileset dir="${javasrc}">
+				<include name="com/extensiblejava/ui/**"/>
+			</fileset>
+		</copy>
+		<javac srcdir="${buildsrc}" destdir="${build}">
+			<classpath>
+				<pathelement path="${buildsrc}"/>
+				<pathelement location="${bindist}/auditspec.jar"/>
+				<pathelement path="${bindist}/audit1.jar"/>
+				<pathelement location="${bindist}/bill.jar"/>
+				<pathelement location="${bindist}/billpay.jar"/>
+				<pathelement location="${lib}/struts.jar"/>
+				<pathelement location="${lib}/servlet-api.jar"/>
+			</classpath>
+		</javac>
+		<delete dir="${buildsrc}"/>
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="bundle" depends="appcompile">
+		<mkdir dir="${deploy}"/>
+		<war destfile="${deploy}/billpay.war" webxml="WEB-INF/web.xml">
+  			<fileset dir="jsp"/>
+  			<webinf dir="WEB-INF">
+  				<exclude name="web.xml"/>
+  				<exclude name="lib/servlet-api.jar"/>
+  			</webinf>
+   			<lib dir="${bindist}" excludes="billtest.jar financialtest.jar audit1test.jar audit2test.jar billpaytest.jar"/>
+  			<classes dir="${build}"/>
+   		</war>
+   		<!-- <delete dir="${build}"/> -->
+	</target>
+	
+</project>

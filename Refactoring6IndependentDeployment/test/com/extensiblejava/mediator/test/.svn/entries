@@ -1,0 +1,52 @@
+8
+
+dir
+110
+https://kcode.googlecode.com/svn/trunk/billpayevolution/billpay/Refactoring6IndependentDeployment/test/com/extensiblejava/mediator/test
+https://kcode.googlecode.com/svn
+
+
+
+2009-11-05T17:58:53.687709Z
+73
+pragkirk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a668f8b4-1848-0410-b2fa-1f034b7baa63
+
+BillPayerAdapterTest.java
+file
+
+
+
+
+2012-08-01T14:31:12.000000Z
+fa97a9a3335cf9301f7b3feb5fa15587
+2009-11-05T17:58:53.687709Z
+73
+pragkirk
+
+AllTests.java
+file
+
+
+
+
+2012-08-01T14:31:12.000000Z
+69b143408a3286285a22720cdc26497d
+2009-11-05T17:58:53.687709Z
+73
+pragkirk
+
