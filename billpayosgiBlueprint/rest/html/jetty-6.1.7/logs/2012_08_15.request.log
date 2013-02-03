@@ -1,2 +1,0 @@
-0:0:0:0:0:0:0:1%0 -  -  [15/Aug/2012:22:57:31 +0000] "GET /newbillclient/billpay.html HTTP/1.1" 200 6326 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.79 Safari/537.1"
-0:0:0:0:0:0:0:1%0 -  -  [15/Aug/2012:22:57:31 +0000] "GET /newbillclient/style.css HTTP/1.1" 200 2834 "http://localhost:8888/newbillclient/billpay.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.79 Safari/537.1"
