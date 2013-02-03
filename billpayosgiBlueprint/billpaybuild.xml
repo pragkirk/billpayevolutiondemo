@@ -596,4 +596,20 @@
 
 	</target>
 	
+	<target name="deploy">
+		<echo message="deploy"/>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/${module}.jar"/>
+		</exec>
+
+	</target>
+	
+	<target name="undeploy">
+		<echo message="deploy"/>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="undeploy ${module}"/>
+		</exec>
+
+	</target>
+	
 </project>
