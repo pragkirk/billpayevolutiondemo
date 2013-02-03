@@ -6,10 +6,20 @@ The rest directory also include an example that shows how we can build a new API
 
 To use billpaybuild.xml, use the following commands.
 
-ant -f billpaybuild.xml 		#Compiles and runs JarAnalyzer
+#Compiles and runs JarAnalyzer
+ant -f billpaybuild.xml
 
-ant clean -f billpaybuild.xml	#Cleans the project
+#Cleans the project
+ant clean -f billpaybuild.xml
 
-ant -Dmodule=auditspec deploy -f billpaybuild.xml #Deploys auditspec.jar. Substitute other module names for auditspec
+#Deploy all modules, except for audit2.jar
+ant deploy-all -f billpaybuild.xml
 
-ant -Dmodule=auditspec undeploy -f billpaybuild.xml #Undeployes auditspec.jar. Substitute other module names for auditspec.
+#Undeploy all modules
+ant undeploy-all -f billpaybuild.xml 
+
+#Deploys auditspec.jar. Substitute other module names for auditspec
+ant -Dmodule=auditspec deploy -f billpaybuild.xml 
+
+#Undeployes auditspec.jar. Substitute other module names for auditspec.
+ant -Dmodule=auditspec undeploy -f billpaybuild.xml 

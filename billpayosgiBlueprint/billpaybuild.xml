@@ -593,21 +593,62 @@
 
 				
 		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./buildstats/appdependencies-new.grph -o ./buildstats/appdependencies-new.png"/></exec>
-
 	</target>
 	
 	<target name="deploy">
-		<echo message="deploy"/>
 		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
-			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/${module}.jar"/>
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/${module}"/>
 		</exec>
-
+	</target>
+	
+	<target name="deploy-all">
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/auditspec.jar"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/audit1.jar"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/bill.jar"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/financial.jar"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/billpay.jar"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ../../billpayevolutiondemo/billpayosgiBlueprint/binosgi/billpayui.wab"/>
+		</exec>
 	</target>
 	
 	<target name="undeploy">
-		<echo message="deploy"/>
 		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
 			<arg line="undeploy ${module}"/>
+		</exec>
+	</target>
+	
+	<target name="undeploy-all">
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy auditspec"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy audit1"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy audit2"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy bill"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy billpay"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy financial"/>
+		</exec>
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="false">
+			<arg line="undeploy billpayui.wab"/>
 		</exec>
 
 	</target>

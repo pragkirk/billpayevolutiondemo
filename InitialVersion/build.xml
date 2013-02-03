@@ -72,4 +72,16 @@
    		</war>
 	</target>
 	
+	<target name="deploy">
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy ../../billpayevolutiondemo/InitialVersion/deploy/billpay.war"/>
+		</exec>
+	</target>
+	
+	<target name="undeploy">
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="undeploy billpay"/>
+		</exec>
+	</target>
+	
 </project>
