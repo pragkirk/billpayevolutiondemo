@@ -124,4 +124,16 @@
 
 	</target>
 	
+	<target name="deploy">
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="deploy --type=osgi ./binosgi/billpayrest.jar"/>
+		</exec>
+	</target>
+	
+	<target name="undeploy">
+		<exec executable="/Users/pragkirk/development/apps/demos/glassfish3/glassfish/bin/asadmin" failonerror="true">
+			<arg line="undeploy billpayrest"/>
+		</exec>
+	</target>
+	
 </project>
