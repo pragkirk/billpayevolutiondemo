@@ -276,7 +276,6 @@
 			<classpath>
 				<pathelement path="${buildsrc}"/>
 				<pathelement location="${binosgi}/auditspec.jar"/>
-				<pathelement location="${binosgi}/financial.jar"/>
 			</classpath>
 		</javac>
 		<!-- <jar jarfile="${bindist}/bill.jar" basedir="${build}" excludes="com/extensiblejava/audit/** com/extensiblejava/financial/**"/> -->
