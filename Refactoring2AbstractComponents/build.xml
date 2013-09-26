@@ -40,7 +40,7 @@
 		<!-- <jar jarfile="${bindist}/bill.jar" basedir="${build}" includes="com/extensiblejava/bill/**" excludes="com/extensiblejava/bill/test/**"/>
 		<jar jarfile="${bindist}/route.jar" basedir="${build}" includes="com/extensiblejava/route/**"/> -->
 		<jar jarfile="${bindist}/audit.jar" basedir="${build}" includes="com/extensiblejava/audit/**"/>
-		<jar jarfile="${bindist}/bill.jar" basedir="${build}" excludes="com/extensiblejava/bill/test/** com/extensiblejava/audit/**"/>
+		<jar jarfile="${bindist}/bill.jar" basedir="${build}" excludes="com/extensiblejava/bill/test/** com/extensiblejava/audit/**  com/extensiblejava/ui/**"/>
 		<jar jarfile="${bindist}/test.jar" basedir="${build}" includes="com/extensiblejava/bill/test/**"/>
 		
 		<junit printsummary="yes" haltonfailure="yes">
