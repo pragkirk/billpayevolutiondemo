@@ -9,7 +9,9 @@ import java.math.*;
  
 public class Auditor {
     public static void main(String[] args) {
-        get("/hello", (req, res) -> "Hello, World!");
+    	port(getHerokuAssignedPort());
+    	get("/", (req, res) -> "Welcome to the Auditor Service!");
+        //get("/hello", (req, res) -> "Hello, World!");
         get("/audit", "application/json", (req, res) -> {
         	final String amount = req.queryParams("amount");
         	
@@ -30,5 +32,13 @@ public class Auditor {
         /*get("/loan", (req, res) -> {        	
         	return new Payment().setPayment(new LoanCalculator().calculatePayment("15000","6.0","60"));
         }, json());*/
+    }
+    
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
