@@ -34,8 +34,8 @@ public class AuditAction extends Action {
 		Bill bill = Bill.loadBill(new DefaultBillEntityLoader(new Integer(billDetailForm.getBillId())));
 
 		try {
-			System.out.println("AUDIT FACADE: " + AuditFacadeFactory.getAuditFacade(bill).getClass());
-			bill.audit(AuditFacadeFactory.getAuditFacade(bill));
+			//System.out.println("AUDIT FACADE: " + AuditFacadeFactory.getAuditFacade().getClass());
+			bill.audit(AuditFacadeFactory.getAuditFacade());
 			request.setAttribute("bill",bill);
 			return (mapping.findForward("success"));
 		} catch (AuditException e) {

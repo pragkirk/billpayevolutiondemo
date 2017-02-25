@@ -25,25 +25,8 @@ public class AuditFacadeFactoryTest extends TestCase {
 	}
 
 	//Test the complete payment piece with BillPayerAdapter.
-	public void testAuditFacade1() {
-
-		Bill bill = Bill.loadBill(new BillEntityLoader() {
-			public Bill loadBill() {
-				return new Bill(new BillDataBean(new Integer(1), new Integer(1), "ONE", new BigDecimal("25.00"), null, null));
-			}
-		});
-		AuditFacade auditor = AuditFacadeFactory.getAuditFacade(bill);
-		assertTrue(auditor instanceof AuditFacade2);
-	}
-
-	public void testAuditFacade2() {
-
-		Bill bill = Bill.loadBill(new BillEntityLoader() {
-			public Bill loadBill() {
-				return new Bill(new BillDataBean(new Integer(1), new Integer(1), "ONE", new BigDecimal("1001.00"), null, null));
-			}
-		});
-		AuditFacade auditor = AuditFacadeFactory.getAuditFacade(bill);
+	public void testAuditFacadeFactory() {
+		AuditFacade auditor = AuditFacadeFactory.getAuditFacade();
 		assertTrue(auditor instanceof AuditFacade1);
 	}
 }
