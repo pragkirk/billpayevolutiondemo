@@ -302,8 +302,7 @@
 				<pathelement location="${bindist}/bill.jar"/>
 				<pathelement location="${bindist}/financial.jar"/>
 				<pathelement location="${bindist}/auditspec.jar"/>
-				<pathelement location="${bindist}/audit1.jar"/>
-				<pathelement location="${bindist}/audit2.jar"/>
+				<pathelement location="restaudit/restauditclient/bin/restaudit.jar"/>
 			</classpath>
 		</javac>
 		<jar jarfile="${bindist}/billpay.jar" basedir="${build}"/>
@@ -311,7 +310,8 @@
 		<delete dir="${build}"/>
 	</target>
 	
-	<target name="billpaytestcompile" depends="billpaycompile">
+	
+	<!-- <target name="billpaytestcompile" depends="billpaycompile">
 		<mkdir dir="${buildsrc}"/>
 		<mkdir dir="${build}"/>
 		<copy todir="${buildsrc}">
@@ -355,9 +355,9 @@
 		</junit>
 		<delete dir="${buildsrc}"/>
 		<delete dir="${build}"/>
-	</target>
+	</target> -->
 	
-	<target name="appcompile" depends="billpaytestcompile">
+	<target name="appcompile" depends="billpaycompile">
 		<!-- <mkdir dir="${buildsrc}"/> -->
 		<mkdir dir="${build}"/>
 		<copy todir="${buildsrc}">
@@ -381,6 +381,10 @@
 	</target>
 	
 	<target name="bundle" depends="appcompile">
+		<copy todir="${bindist}">
+			<fileset dir="restaudit/restauditclient/bin">
+			</fileset>
+		</copy>
 		<mkdir dir="${deploy}"/>
 		<war destfile="${deploy}/billpay.war" webxml="WEB-INF/web.xml">
   			<fileset dir="jsp"/>
@@ -388,10 +392,9 @@
   				<exclude name="web.xml"/>
   				<exclude name="lib/servlet-api.jar"/>
   			</webinf>
-   			<lib dir="${bindist}" excludes="audit2.jar billtest.jar financialtest.jar audit1test.jar audit2test.jar billpaytest.jar"/>
+   			<lib dir="${bindist}" excludes="audit1.jar audit2.jar billtest.jar financialtest.jar audit1test.jar audit2test.jar billpaytest.jar"/>
   			<classes dir="${build}"/>
    		</war>
-   		<!-- <delete dir="${build}"/> -->
 	</target>
 	
 	<target name="xmlanalyzerall" depends="bundle">
@@ -445,6 +448,7 @@
 		<copy todir="${buildstats}">
 			<fileset dir="${bindist}">
 				<exclude name="*test.jar"/>
+				<exclude name="audit1.jar"/>
 				<exclude name="audit2.jar"/>
 			</fileset>
 		</copy>

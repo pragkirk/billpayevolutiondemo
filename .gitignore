@@ -32,3 +32,11 @@ billpayosgiBlueprint/restaudit/restauditclient/.gradle/2.12/taskArtifacts/cache.
 billpayosgiBlueprint/restaudit/restauditclient/.gradle/2.12/taskArtifacts/fileSnapshots.bin
 
 billpayosgiBlueprint/restaudit/restauditclient/.gradle/2.12/taskArtifacts/taskArtifacts.bin
+
+Refactoring7ImplementationFactory/restaudit/restauditclient/.gradle/2.12/taskArtifacts/cache.properties
+
+*.bin
+
+*.lock
+
+Refactoring7ImplementationFactory/restaudit/restauditservice/.gradle/2.12/taskArtifacts/cache.properties

@@ -1,0 +1,30 @@
+buildscript {
+	
+	dependencies {
+		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+	}
+}
+
+plugins {
+	    id 'java'
+    	id 'application'
+	    id 'com.github.johnrengelman.shadow' version '1.2.3'
+	}
+ 
+sourceCompatibility = 1.8
+ 
+mainClassName = "com.kirkk.extensiblejava.audit.restservice.Auditor"
+ 
+repositories {
+    jcenter()
+}
+ 
+dependencies {
+    compile 'com.sparkjava:spark-core:2.2'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile files('../../bin/auditspec.jar' , '../../bin/audit2.jar')
+}
+
+shadowJar {
+    archiveName='auditservice.jar'
+}

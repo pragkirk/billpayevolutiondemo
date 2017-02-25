@@ -1,6 +1,7 @@
 package com.extensiblejava.mediator;
 
 import com.extensiblejava.audit.audit1.*;
+//import com.extensiblejava.restaudit.*;
 import com.extensiblejava.audit.*;
 
 //If I put this class in the same component as Bill, I've logically decoupled Bill from
@@ -9,6 +10,7 @@ import com.extensiblejava.audit.*;
 public class AuditFacadeFactory {
 	public static AuditFacade getAuditFacade() {
 		return new AuditFacade1();
+		//return new RestAuditFacade();
 	}
 
 }
