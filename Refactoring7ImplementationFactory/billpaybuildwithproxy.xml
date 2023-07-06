@@ -1,4 +1,4 @@
-<project name="Proof" default="xmlanalyzerapp" basedir=".">
+<project name="Proof" default="visualize" basedir=".">
 
 	<property name="javasrc" location="${basedir}/src"/>
 	<property name="buildstats" location="${basedir}/buildstats"/>
@@ -396,6 +396,31 @@
   			<classes dir="${build}"/>
    		</war>
 	</target>
+	
+	<target name="visualize" depends="bundle">
+		<copy todir="${buildstats}">
+			<fileset dir="${bindist}">
+				<exclude name="*test.jar"/>
+				<!-- <exclude name="audit2.jar"/> -->
+			</fileset>
+		</copy>
+		
+		<!-- ><exec executable="jdeps" ><arg line="-dotoutput=./buildstats -s ./buildstats/*.jar"/></exec> -->
+		
+		<exec executable="sh" >
+			<arg value="-c"/>
+			<arg value="jdeps -dotoutput=./buildstats -s ./buildstats/*.jar"/>
+		</exec>
+		
+		<!-- ><exec executable="jdeps" >
+			<arg value="-dotoutput=./buildstats"/>
+			<arg value="-s"/>
+			<arg value="./buildstats/*.jar"/>
+		</exec>  -->
+		
+		<exec executable="dot" ><arg line="-Tpng -Nshape=box -Nfontsize=30 -Nwidth=1.5 -Nheight=1.25 ./buildstats/summary.dot -o ./buildstats/appdependencies.png"/></exec> 
+		
+	</target>	
 	
 	<target name="xmlanalyzerall" depends="bundle">
 

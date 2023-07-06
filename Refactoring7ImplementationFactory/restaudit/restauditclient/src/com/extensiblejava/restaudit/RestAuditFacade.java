@@ -15,8 +15,8 @@ public class RestAuditFacade implements AuditFacade {
 	public BigDecimal audit(Auditable auditable) throws AuditException {
 		try {
 		
-			//URL url = new URL("http://localhost:4567/audit?amount=" + auditable.getAmount().setScale(2, BigDecimal.ROUND_UP).toString());
-			URL url = new URL("http://cryptic-fjord-37158.herokuapp.com/audit?amount=" + auditable.getAmount().setScale(2, BigDecimal.ROUND_UP).toString());
+			URL url = new URL("http://localhost:4567/audit?amount=" + auditable.getAmount().setScale(2, BigDecimal.ROUND_UP).toString());
+			//URL url = new URL("http://cryptic-fjord-37158.herokuapp.com/audit?amount=" + auditable.getAmount().setScale(2, BigDecimal.ROUND_UP).toString());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
