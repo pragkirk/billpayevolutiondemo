@@ -206,6 +206,7 @@
 				<pathelement path="${buildsrc}"/>
 				<pathelement location="${bindist}/audit.jar"/>
 				<pathelement location="${bindist}/bill.jar"/>
+				<pathelement location="${bindist}/financial.jar"/>
 				<pathelement location="${lib}/struts.jar"/>
 				<pathelement location="${lib}/servlet-api.jar"/>
 			</classpath>
