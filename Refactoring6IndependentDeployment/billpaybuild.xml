@@ -175,6 +175,8 @@
 		<javac srcdir="${buildsrc}" destdir="${build}">
 			<classpath>
 				<pathelement path="${buildsrc}"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
+				<pathelement location="${buildlib}/junit.jar"/>
 			</classpath>
 		</javac>
 		<jar jarfile="${bindist}/financial.jar" basedir="${build}" includes="com/extensiblejava/financial/**"/>
@@ -296,6 +298,7 @@
 			<classpath>
 				<pathelement path="${buildsrc}"/>
 				<pathelement location="${bindist}/bill.jar"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
 				<pathelement location="${bindist}/financial.jar"/>
 			</classpath>
 		</javac>
@@ -320,6 +323,7 @@
 			<classpath>
 				<pathelement path="${buildsrc}"/>
 				<pathelement location="${bindist}/financial.jar"/>
+				<pathelement path="${bindist}/auditspec.jar"/>
 				<pathelement location="${bindist}/bill.jar"/>
 				<pathelement location="${bindist}/billpay.jar"/>
 				<pathelement location="${buildlib}/junit.jar"/>
@@ -356,9 +360,10 @@
 			<classpath>
 				<pathelement path="${buildsrc}"/>
 				<pathelement location="${bindist}/auditspec.jar"/>
-				<pathelement path="${bindist}/audit1.jar"/>
+				<pathelement location="${bindist}/audit1.jar"/>
 				<pathelement location="${bindist}/bill.jar"/>
 				<pathelement location="${bindist}/billpay.jar"/>
+				<pathelement location="${bindist}/financial.jar"/>
 				<pathelement location="${lib}/struts.jar"/>
 				<pathelement location="${lib}/servlet-api.jar"/>
 			</classpath>
